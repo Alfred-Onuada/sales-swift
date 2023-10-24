@@ -111,6 +111,7 @@ document.addEventListener('DOMContentLoaded', initializeAutoComplete());
 
 
 function focusInputDiv() {
+  document.getElementById('myTabContent').scrollIntoView();
   document.getElementById('postcode-search').focus()
   document.getElementById('myTabContent').classList.add("pulse")
 
