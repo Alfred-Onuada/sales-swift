@@ -46,7 +46,7 @@ function initializeAutoComplete() {
             closeAllLists();
 
             // MOVE TO THE NEXT PAGE
-            window.location.href = `/pages/add-property.html?postcode=${input.value}`;
+            window.location.href = `pages/add-property.html?postcode=${input.value}`;
         });
         a.appendChild(b);
       }
