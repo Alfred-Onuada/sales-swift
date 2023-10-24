@@ -6614,7 +6614,7 @@ textarea:focus {
 .ud-btn i {
   margin-left: 10px;
   font-size: 16px;
-  transform: rotate(-45deg);
+  transform: rotate(135deg);
 }
 .ud-btn:hover,
 .ud-btn:focus,
@@ -10606,3 +10606,41 @@ input:focus-visible {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.autocomplete-items {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.autocomplete-items div {
+  margin: 10px 0px;
+  padding: 10px;
+}
+
+.autocomplete-items div:hover {
+  background-color: gray;
+  cursor: pointer;
+  color: white;
+}
+
+.pulse {
+  animation: pulse 1s 2;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
