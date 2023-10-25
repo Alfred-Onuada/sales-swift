@@ -1,9 +1,11 @@
 function beginFormProcessing() {
-  const currentLocationSpan = document.getElementById('currentLocation');
+  const currentLocationSpan = document.getElementsByClassName('currentLocation');
   const currentLocationFromUrl = decodeURI(window.location.search.replace('?postcode=', ''));
 
   if (currentLocationFromUrl) {
-    currentLocationSpan.textContent = currentLocationFromUrl;
+    [].forEach.call(currentLocationSpan, function (el) {
+      el.innerHTML = currentLocationFromUrl;
+    });
   }
 }
 
