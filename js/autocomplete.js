@@ -45,7 +45,7 @@ function initializeAutoComplete() {
           input.value = this.dataset.name;
           closeAllLists();
           
-          window.location.assign(`/pages/add-property.html?id=${encodeURIComponent(this.dataset.id)}`);
+          window.location.assign(`pages/add-property.html?id=${encodeURIComponent(this.dataset.id)}`);
         })
       }
 
