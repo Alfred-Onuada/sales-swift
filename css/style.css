@@ -10611,17 +10611,40 @@ input:focus-visible {
 .autocomplete-items {
   margin-top: 10px;
   font-size: 18px;
+  max-height: 300px;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
 }
 
 .autocomplete-items div {
   margin: 10px 0px;
   padding: 10px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  min-width: 100%;
 }
 
 .autocomplete-items div:hover {
   background-color: gray;
   cursor: pointer;
   color: white;
+}
+
+.autocomplete-items div:hover .extra-address-text, .autocomplete-items div:hover .angle-right-search {
+  color: white;
+}
+
+.extra-address-text {
+  font-size: 16px;
+  color: gray;
+}
+
+.angle-right-search {
+  font-size: 20px;
+  color: gray;
+  margin-left: 10px;
 }
 
 .pulse {

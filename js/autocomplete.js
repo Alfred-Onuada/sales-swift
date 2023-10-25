@@ -4,14 +4,10 @@ function initializeAutoComplete() {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
 
-    let currentFocus;
-
     /*close any already open lists of autocompleted values*/
     closeAllLists();
 
     if (!val) { return false;}
-
-    currentFocus = -1;
 
     /*create a DIV element that will contain the items (values):*/
     const a = document.createElement("DIV");
@@ -27,29 +23,33 @@ function initializeAutoComplete() {
       a.appendChild(b);
     }
 
-    for (i = 0; i < options.length; i++) {
-      /*check if the item starts with the same letters as the text field value:*/
-      if (options[i].place_name.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-        /*create a DIV element for each matching element:*/
-        const b = document.createElement("DIV");
-        /*make the matching letters bold:*/
-        b.innerHTML = "<strong>" + options[i].place_name.substr(0, val.length) + "</strong>";
-        b.innerHTML += options[i].place_name.substr(val.length);
-        /*insert a input field that will hold the current array item's value:*/
-        b.innerHTML += "<input type='hidden' value='" + options[i].postcode + "'>";
-        /*execute a function when someone clicks on the item value (DIV element):*/
-        b.addEventListener("click", function(e) {
-            /*insert the value for the autocomplete text field:*/
-            input.value = this.getElementsByTagName("input")[0].value;
-            /*close the list of autocompleted values,
-            (or any other open lists of autocompleted values:*/
-            closeAllLists();
+    function highlightMatch(str) {
+      return str.replace(new RegExp(val, "gi"), (match) => `<strong>${match}</strong>`);
+    }
 
-            // MOVE TO THE NEXT PAGE
-            window.location.href = `pages/add-property.html?postcode=${input.value}`;
-        });
-        a.appendChild(b);
+    for (i = 0; i < options.length; i++) {
+      const b = document.createElement("DIV");
+      b.innerHTML = highlightMatch(options[i].Text);
+      b.dataset.name = options[i].Text;
+      b.dataset.id = options[i].Id;
+
+      if (options[i].Type != 'Address') {
+        b.innerHTML += `<span class="extra-address-text">${options[i].Description}</span><span class="fa-solid fa-angle-right angle-right-search"></span>`;
+        b.addEventListener("click", function(e) {
+          closeAllLists();
+
+          getAddresses(this.dataset.id);
+        })
+      } else {
+        b.addEventListener("click", function(e) {
+          input.value = this.dataset.name;
+          closeAllLists();
+          
+          window.location.assign(`/pages/add-property.html?id=${encodeURIComponent(this.dataset.id)}`);
+        })
       }
+
+      a.appendChild(b);
     }
 
     function closeAllLists(elmnt) {
@@ -80,15 +80,27 @@ function initializeAutoComplete() {
     };
   }
 
+  async function getAddresses(containerId) {
+    try {
+      const searchTerm = input.value;
+      const resp = await fetch(`${findApiUrl}?Key=${encodeURIComponent(access_token)}&Text=${encodeURIComponent(searchTerm)}&Language=en-gb&Origin=GBR&Countries=GBR&Container=${encodeURIComponent(containerId)}`);
+      const data = await resp.json();
+
+      const suggestions = data.Items;
+
+      showAutoCompletion(input, searchTerm, suggestions);
+    } catch (error) {
+      showAutoCompletion(input, searchTerm, []);
+    }
+  }
+
   async function searchPostcode(input) {
     try {
       const searchTerm = input.value;
-      const resp = await fetch(`${mapboxUrl}/${searchTerm}.json?access_token=${access_token}`);
+      const resp = await fetch(`${findApiUrl}?Key=${encodeURIComponent(access_token)}&Text=${encodeURIComponent(searchTerm)}&Language=en-gb&Limit=10&Origin=GBR&Countries=GBR`);
       const data = await resp.json();
 
-      const suggestions = data.features
-      .filter(option => option.context.find(ctx => ctx.text.includes('United Kingdom')))
-      .map(option => ({ place_name: option.place_name, postcode: option.text }));
+      const suggestions = data.Items;
 
       showAutoCompletion(input, searchTerm, suggestions);
     } catch (error) {
@@ -98,8 +110,8 @@ function initializeAutoComplete() {
 
   const input = document.getElementById('postcode-search');
   const searchBtn = document.getElementById('search-btn');
-  const access_token = "pk.eyJ1IjoiYWxmcmVkb251YWRhIiwiYSI6ImNsbzRncGlyZTAyMmcyaXFkbHZweTM2cTcifQ.cmtWXyEPgIXZTdH1ltzx0g";
-  const mapboxUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places`
+  const access_token = "FY37-ZU98-DA44-DA26";
+  const findApiUrl = "https://api.addressy.com/Capture/Interactive/Find/v1.1/json3ex.ws"
 
   if (input) {
     input.addEventListener('keyup', () => debounce(searchPostcode(input), 500));
