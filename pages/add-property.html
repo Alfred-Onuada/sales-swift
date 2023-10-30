@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="./../css/add-property/bootstrap.min.css">
     <link rel="stylesheet" href="./../css/add-property/font-awesome-all.min.css">
     <link rel="stylesheet" href="./../css/add-property/jquery.classycountdown.min.css">
-    <link rel="stylesheet" href="./../css/add-property/nice-select.min.css">
+    <!-- <link rel="stylesheet" href="./../css/add-property/nice-select.min.css"> -->
     <link rel="stylesheet" href="./../css/add-property/reset.css">
     <link rel="stylesheet" href="./../css/add-property/style.css">
 
@@ -124,21 +124,15 @@
                                                     <!-- End Progress Bar -->
 
                                                     <div class="formify-forms__quiz-single">
-                                                        <h3
-                                                            class="formify-forms__quiz-title formify-forms__quiz-title--v6">
-                                                            Tell us about you...</h3>
                                                         <p class="formify-forms__quiz-text m-0"><span
                                                                 class="fa-solid fa-location-dot"></span>
-                                                                <span class="currentLocation"></span><a class="edit_link"
-                                                                href="./../">(edit)</a></p>
+                                                            <span class="currentLocation"></span><a class="edit_link"
+                                                                href="./../">(edit)</a>
+                                                        </p>
 
                                                         <div class="formify-forms__quiz-form formify-mg-top-20">
                                                             <div class="formify-forms__quiz-form">
                                                                 <div class="row">
-
-
-
-
                                                                     <div class="col-lg-6 col-md-6">
                                                                         <div class="form-group">
                                                                             <div class="formify-forms__input">
@@ -164,7 +158,7 @@
                                                                             <div class="formify-forms__input">
                                                                                 <label>Contact Number
                                                                                     <span>*</span></label>
-                                                                                <input type="contact_no" name="contat"
+                                                                                <input type="contact_no" name="phone"
                                                                                     placeholder="contact  number*"
                                                                                     required="required">
                                                                             </div>
@@ -180,16 +174,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <!--
-                                                                        <div class="col-12">
-                                                                            <div class="form-group">
-                                                                                <div class="formify-forms__input formify-forms__textarea">
-                                                                                    <label>Tell us about what you do</label>
-                                                                                    <textarea type="textarea" name="email" placeholder="Enter your tagline..." required="required"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
--->
+
                                                                     <div class="col-12">
                                                                         <!-- Form Group -->
                                                                         <div class="form-group">
@@ -206,11 +191,13 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
                                                                 <!-- Form Group -->
                                                                 <div class="form-group">
                                                                     <div class="formify-forms__button">
-                                                                        <button
-                                                                            class="formify-btn next-step">Next</button>
+                                                                        <span class="next-step hidden"></span>
+                                                                        <button class="formify-btn"
+                                                                            id="first-step">Next</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -235,68 +222,15 @@
                                                     </div>
                                                     <!-- End Progress Bar -->
                                                     <div class="formify-forms__quiz-single">
-                                                        <h3
-                                                            class="formify-forms__quiz-title formify-forms__quiz-title--v6">
-                                                            Tell us about your property...</h3>
                                                         <p class="formify-forms__quiz-text m-0"><span
                                                                 class="fa-solid fa-location-dot"></span>
-                                                                <span class="currentLocation"></span><a class="edit_link"
-                                                                href="./../">(edit)</a></p>
+                                                            <span class="currentLocation"></span><a class="edit_link"
+                                                                href="./../">(edit)</a>
+                                                        </p>
 
                                                         <div class="formify-forms__quiz-form formify-mg-top-20">
                                                             <div
                                                                 class="formify-forms__quiz-form formify-forms__quiz-form--checkbox">
-
-                                                                <!--  <ul class="formify-forms__cdefault formify-forms__cdefault-multiple">
-                                                                        <li>
-                                                                            <input class="formify-forms__input d-none" type="checkbox" value="" id="service-1" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-1">Challenging work</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-2" checked="" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-2">Diversity and inclusion</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-3" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-3">Innovative product</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-4" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-4">Meaningful work</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-5" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-5">Progressive leadership</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-6" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-6">Great tech and tools</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-7" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-7">Meaningful work</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-8" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-8">Data driven decision</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-9" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-9">Transparency and respect</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-10" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-10">Working with great people</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-11" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-11">Development and progression</label>
-                                                                        </li>
-                                                                        <li>
-                                                                            <input class="formify-forms__input  d-none" type="checkbox" value="" id="service-12" name="service-method">
-                                                                            <label class="formify-forms__cdefault-label" for="service-12">Flexibility and wellbeing</label>
-                                                                        </li>
-<!--                                                                    </ul>-->
 
                                                                 <div class="row">
 
@@ -304,243 +238,369 @@
                                                                         class="formify-forms__quiz-form formify-forms__quiz-form--checkbox formify-mg-top-20">
                                                                         <label>What is the Property
                                                                             Type?<span>*</span></label>
-                                                                        <ul
-                                                                            class="formify-forms__cdefault formify-forms__cdefault--options">
-                                                                            <li>
-                                                                                <input
-                                                                                    class="formify-forms__input d-none"
-                                                                                    type="radio" value=""
-                                                                                    id="payment-optioin1"
-                                                                                    name="payment-option">
-                                                                                <label
-                                                                                    class="formify-forms__cdefault-label"
-                                                                                    for="payment-optioin1"><span
-                                                                                        class="formify-forms__cdefault--check"></span>House</label>
-                                                                            </li>
-                                                                            <li>
-                                                                                <input
-                                                                                    class="formify-forms__input  d-none"
-                                                                                    type="radio" value=""
-                                                                                    id="payment-optioin2"
-                                                                                    name="payment-option">
-                                                                                <label
-                                                                                    class="formify-forms__cdefault-label"
-                                                                                    for="payment-optioin2"><span
-                                                                                        class="formify-forms__cdefault--check"></span>Apartment/Flat</label>
-                                                                            </li>
-                                                                            <li>
-                                                                                <input
-                                                                                    class="formify-forms__input  d-none"
-                                                                                    type="radio" value=""
-                                                                                    id="payment-optioin3"
-                                                                                    name="payment-option">
-                                                                                <label
-                                                                                    class="formify-forms__cdefault-label"
-                                                                                    for="payment-optioin3"><span
-                                                                                        class="formify-forms__cdefault--check"></span>Land</label>
-                                                                            </li>
-                                                                            <li>
-                                                                                <input
-                                                                                    class="formify-forms__input  d-none"
-                                                                                    type="radio" value=""
-                                                                                    id="payment-optioin4"
-                                                                                    name="payment-option">
-                                                                                <label
-                                                                                    class="formify-forms__cdefault-label"
-                                                                                    for="payment-optioin4"><span
-                                                                                        class="formify-forms__cdefault--check"></span>Other</label>
-                                                                            </li>
-
-                                                                        </ul>
-                                                                    </div>
-
-
-                                                                    <div class="col-lg-6 col-md-12">
-                                                                        <div class="form-group half_n_half">
-                                                                            <div class="formify-forms__input width_48">
-                                                                                <label>Property
-                                                                                    Details<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
-                                                                                    required="required">
-
+                                                                        <div class="flex">
+                                                                            <input type="text" name="property-type"
+                                                                                hidden value="house">
+                                                                            <div data-val="house"
+                                                                                class="custom-radio flex custom-select-active mr-20">
+                                                                                <span
+                                                                                    class="custom-select-circle"></span>
+                                                                                <h4>House</h4>
                                                                             </div>
-                                                                            <div class="formify-forms__input width_48">
-                                                                                <label>Amount of
-                                                                                    Bedrooms?<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
-                                                                                    required="required">
-
+                                                                            <div data-val="apartment"
+                                                                                class="custom-radio flex mr-20">
+                                                                                <span
+                                                                                    class="custom-select-circle"></span>
+                                                                                <h4>Apartment / Flat</h4>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="col-lg-12 col-md-12">
-                                                                            <div class="form-group">
-                                                                                <div class="formify-forms__input">
-                                                                                    <label>What type of build is the
-                                                                                        property?<span></span></label>
-                                                                                    <div
-                                                                                        class="formify-forms__quiz-form formify-forms__quiz-form--checkbox">
-
-                                                                                        <ul
-                                                                                            class="formify-forms__cdefault formify-forms__cdefault--options width_32">
-                                                                                            <li>
-                                                                                                <input
-                                                                                                    class="formify-forms__input d-none"
-                                                                                                    type="radio"
-                                                                                                    value=""
-                                                                                                    id="payment-optioin5"
-                                                                                                    name="payment-option">
-                                                                                                <label
-                                                                                                    class="formify-forms__cdefault-label"
-                                                                                                    for="payment-optioin5">Privately
-                                                                                                    Built</label>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <input
-                                                                                                    class="formify-forms__input  d-none"
-                                                                                                    type="radio"
-                                                                                                    value=""
-                                                                                                    id="payment-optioin6"
-                                                                                                    name="payment-option">
-                                                                                                <label
-                                                                                                    class="formify-forms__cdefault-label"
-                                                                                                    for="payment-optioin6">Ex-Local</label>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <input
-                                                                                                    class="formify-forms__input  d-none"
-                                                                                                    type="radio"
-                                                                                                    value=""
-                                                                                                    id="payment-optioin6"
-                                                                                                    name="payment-option">
-                                                                                                <label
-                                                                                                    class="formify-forms__cdefault-label"
-                                                                                                    for="payment-optioin6">New
-                                                                                                    Build</label>
-                                                                                            </li>
-
-
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div data-val="land"
+                                                                                class="custom-radio flex mr-20">
+                                                                                <span
+                                                                                    class="custom-select-circle"></span>
+                                                                                <h4>Land</h4>
+                                                                            </div>
+                                                                            <div data-val="commercial"
+                                                                                class="custom-radio flex mr-20">
+                                                                                <span
+                                                                                    class="custom-select-circle"></span>
+                                                                                <h4>Commercial</h4>
+                                                                            </div>
+                                                                            <div data-val="other"
+                                                                                class="custom-radio flex">
+                                                                                <span
+                                                                                    class="custom-select-circle"></span>
+                                                                                <h4>Other</h4>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+                                                                    <div id="second-house">
+                                                                        <br>
+                                                                        <label>Further describe your property
+                                                                            type?<span>*</span></label>
+                                                                        <select name="house-type">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="Detached">Detached
+                                                                            </option>
+                                                                            <option value="Semi">Semi</option>
+                                                                            <option value="Terraced">Terraced
+                                                                            </option>
+                                                                            <option value="End Terraced">End
+                                                                                Terraced</option>
+                                                                            <option value="Bungalow Detached">
+                                                                                Bungalow Detached</option>
+                                                                            <option value="Bungalow Semi">Bungalow
+                                                                                Semi</option>
+                                                                            <option value="Park Home">Park Home
+                                                                            </option>
+                                                                            <option value="Chalet">Chalet</option>
+                                                                            <option value="HMO">HMO</option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <label>What is the property
+                                                                            tenure?<span>*</span></label>
+                                                                        <select name="house-tenure-type">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="Freehold">Freehold
+                                                                            </option>
+                                                                            <option value="Leasehold">Leasehold
+                                                                            </option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <label>What type of build is the
+                                                                            property?<span>*</span></label>
+                                                                        <select name="house-build-type">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="Ex Local">Ex Local
+                                                                            </option>
+                                                                            <option value="Privately Built">
+                                                                                Privately Built</option>
+                                                                            <option value="Newly Built">Newly Built
+                                                                            </option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <label>How many bedrooms does your property
+                                                                            have?<span>*</span></label>
+                                                                        <select name="house-bedrooms">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="Studio">Studio</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6-10">6-10</option>
+                                                                            <option value="10+">10+</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div id="second-apartment" class="hide">
+                                                                        <br>
+                                                                        <label>Further describe your property
+                                                                            type?<span>*</span></label>
+                                                                        <select name="apartment-type">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="Purpose Built">Purpose
+                                                                                Built</option>
+                                                                            <option value="Maisonette">Maisonette
+                                                                            </option>
+                                                                            <option value="Conversion">Conversion
+                                                                            </option>
+                                                                            <option value="Penthouse">Penthouse
+                                                                            </option>
+                                                                            <option value="Basement">Basement
+                                                                            </option>
+                                                                            <option value="Retirement">Retirement
+                                                                            </option>
+                                                                            <option value="Flats">Flats</option>
+                                                                            <option value="Student Flats">Student
+                                                                                Flats</option>
+                                                                            <option value="High Rise Block">High
+                                                                                Rise Block</option>
+                                                                            <option value="Duplex">Duplex</option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <label>What is the property
+                                                                            tenure?<span>*</span></label>
+                                                                        <select name="apartment-tenure-type">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="Freehold">Freehold
+                                                                            </option>
+                                                                            <option value="Leasehold">Leasehold
+                                                                            </option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <label>What type of build is the
+                                                                            property?<span>*</span></label>
+                                                                        <select name="apartment-build-type">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="Ex Local">Ex Local
+                                                                            </option>
+                                                                            <option value="Privately Built">
+                                                                                Privately Built</option>
+                                                                            <option value="Newly Built">Newly Built
+                                                                            </option>
+                                                                        </select>
+                                                                        <br>
+                                                                        <label>What floor is the property
+                                                                            on?<span>*</span></label>
+                                                                        <input type="text" name="apartment-floor"
+                                                                            placeholder="1st, 2nd, 3rd, 98th">
+                                                                        <br>
+                                                                        <label>How many floors in total are in the
+                                                                            property block?<span>*</span></label>
+                                                                        <input type="text" name="apartment-total-floor"
+                                                                            placeholder="1st, 2nd, 3rd, 98th">
+                                                                        <br>
+                                                                        <label>How many bedrooms does your property
+                                                                            have?<span>*</span></label>
+                                                                        <select name="apartment-bedrooms">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="Studio">Studio</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6-10">6-10</option>
+                                                                            <option value="10+">10+</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div id="second-land" class="hide">
+                                                                        <br>
+                                                                        <label>Further describe your property
+                                                                            type?<span>*</span></label>
+                                                                        <select name="land-type" id="land-opt-toggle">
+                                                                            <option data-display="Select" value="">
+                                                                                Please
+                                                                                select one</option>
+                                                                            <option value="With Planning">With
+                                                                                Planning</option>
+                                                                            <option value="Without Planning">Without
+                                                                                Planning</option>
+                                                                        </select>
 
-
-
-
-                                                                    <div class="col-6 half_to_full">
-                                                                        <div class="form-group">
-                                                                            <div class="formify-forms__input">
-                                                                                <label>What is the Properties
-                                                                                    Tenure?<span></span></label>
-                                                                                <div
-                                                                                    class="formify-forms__quiz-form formify-forms__quiz-form--checkbox">
-
-                                                                                    <ul
-                                                                                        class="formify-forms__cdefault formify-forms__cdefault--options width_48">
-                                                                                        <li>
-                                                                                            <input
-                                                                                                class="formify-forms__input d-none"
-                                                                                                type="radio" value=""
-                                                                                                id="payment-optioin5"
-                                                                                                name="payment-option">
-                                                                                            <label
-                                                                                                class="formify-forms__cdefault-label"
-                                                                                                for="payment-optioin5"><span
-                                                                                                    class="formify-forms__cdefault--check"></span>Freehold</label>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <input
-                                                                                                class="formify-forms__input  d-none"
-                                                                                                type="radio" value=""
-                                                                                                id="payment-optioin6"
-                                                                                                name="payment-option">
-                                                                                            <label
-                                                                                                class="formify-forms__cdefault-label"
-                                                                                                for="payment-optioin6"><span
-                                                                                                    class="formify-forms__cdefault--check"></span>Leasehold</label>
-                                                                                        </li>
-
-
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
+                                                                        <div class="hide" id="with-p">
+                                                                            <br>
+                                                                            <label>Select
+                                                                                Purpose<span>*</span></label>
+                                                                            <select
+                                                                                name="land-purpose-without-planning">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Agricultural Land">
+                                                                                    Agricultural Land</option>
+                                                                                <option value="Greenfield Land">
+                                                                                    Greenfield Land</option>
+                                                                                <option value="Brownfield Land">
+                                                                                    Brownfield Land</option>
+                                                                                <option value="Woodland">Woodland
+                                                                                </option>
+                                                                                <option value="Vacant Land">Vacant
+                                                                                    Land</option>
+                                                                                <option value="Wilderness Area">
+                                                                                    Wilderness Area</option>
+                                                                            </select>
                                                                         </div>
-
-                                                                        <div class="form-group width_48">
-                                                                            <div class="formify-forms__input">
-
-                                                                                <div
-                                                                                    class="formify-forms__quiz-form formify-forms__quiz-form--checkbox">
-
-                                                                                    <ul
-                                                                                        class="formify-forms__cdefault formify-forms__cdefault--options ">
-                                                                                        <li>
-                                                                                            <label>Floor of the
-                                                                                                Property?<span></span></label>
-                                                                                            <input type="text"
-                                                                                                name="Select Type"
-                                                                                                placeholder="Select Type"
-                                                                                                required="required">
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <label>Total Floors in
-                                                                                                Block?<span></span></label>
-
-                                                                                            <input type="text"
-                                                                                                name="Select Type"
-                                                                                                placeholder="Select Type"
-                                                                                                required="required">
-                                                                                        </li>
-
-
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
+                                                                        <div class="hide" id="without-p">
+                                                                            <br>
+                                                                            <label>Select
+                                                                                Purpose<span>*</span></label>
+                                                                            <select name="land-purpose-with-planning">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Residential Land">
+                                                                                    Residential Land</option>
+                                                                                <option value="Commercial Land">
+                                                                                    Commercial Land</option>
+                                                                                <option value="Industrial Land">
+                                                                                    Industrial Land</option>
+                                                                                <option value="Mixed-Use Land">
+                                                                                    Mixed-Use Land</option>
+                                                                                <option value="Retail Land">Retail
+                                                                                    Land</option>
+                                                                                <option value="Office Land">Office
+                                                                                    Land</option>
+                                                                                <option
+                                                                                    value="Leisure and Recreation Land">
+                                                                                    Leisure and Recreation Land
+                                                                                </option>
+                                                                                <option value="Educational Land">
+                                                                                    Educational Land</option>
+                                                                                <option value="Healthcare Land">
+                                                                                    Healthcare Land</option>
+                                                                                <option value="Hotel and Tourism Land">
+                                                                                    Hotel and Tourism Land</option>
+                                                                                <option
+                                                                                    value="Transport and Infrastructure Land">
+                                                                                    Transport and Infrastructure
+                                                                                    Land</option>
+                                                                                <option
+                                                                                    value="Agricultural Conversion Land">
+                                                                                    Agricultural Conversion Land
+                                                                                </option>
+                                                                                <option value="Residential Plot">
+                                                                                    Residential Plot</option>
+                                                                                <option value="Commercial Plot">
+                                                                                    Commercial Plot</option>
+                                                                                <option value="Industrial Plot">
+                                                                                    Industrial Plot</option>
+                                                                                <option value="Redevelopment Land">
+                                                                                    Redevelopment Land</option>
+                                                                            </select>
                                                                         </div>
                                                                     </div>
-                                                                    <!--
-
-                                                                        </div>
-																		
-                                                                        <div class="col-12">
-                                                                            <div class="form-group">
-                                                                                <div class="formify-forms__input formify-forms__textarea">
-                                                                                    <label>Tell us about what you do</label>
-                                                                                    <textarea type="textarea" name="email" placeholder="Enter your tagline..." required="required"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
--->
-                                                                    <div class="col-12">
-                                                                        <!-- Form Group -->
-                                                                        <!--
-                                                                            <div class="form-group">
-                                                                                <div class="formify-forms__spaceb">
-                                                                                    <div class="formify-forms__checkbox">
-                                                                                        <label class="m-0" for="checkbox">By continuing the next level, you agree to  <a href="#">privacy policy</a> and <a href="#">terms of use</a></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
--->
+                                                                    <div id="second-commercial" class="hide">
+                                                                        <br>
+                                                                        <label>Further describe your property
+                                                                            type<span>*</span></label>
+                                                                        <select name="commercial-type">
+                                                                            <option data-display="Select" value="">
+                                                                                Please select
+                                                                                one</option>
+                                                                            <option value="Office Building">Office
+                                                                                Building</option>
+                                                                            <option value="Retail Space">Retail Space
+                                                                            </option>
+                                                                            <option value="Industrial Warehouse">
+                                                                                Industrial Warehouse</option>
+                                                                            <option value="Shopping Center">Shopping
+                                                                                Center</option>
+                                                                            <option value="Mixed-Use Property">Mixed-Use
+                                                                                Property</option>
+                                                                            <option value="Restaurant Space">Restaurant
+                                                                                Space</option>
+                                                                            <option value="Medical Office Building">
+                                                                                Medical Office Building</option>
+                                                                            <option value="Hotel or Motel">Hotel or
+                                                                                Motel</option>
+                                                                            <option value="Apartment Complex">Apartment
+                                                                                Complex</option>
+                                                                            <option value="Self-Storage Facility">
+                                                                                Self-Storage Facility</option>
+                                                                            <option value="Office Park">Office Park
+                                                                            </option>
+                                                                            <option value="Strip Mall">Strip Mall
+                                                                            </option>
+                                                                            <option value="Business Park">Business Park
+                                                                            </option>
+                                                                            <option value="Manufacturing Facility">
+                                                                                Manufacturing Facility</option>
+                                                                            <option value="Gas Station">Gas Station
+                                                                            </option>
+                                                                            <option value="Shopping Mall">Shopping Mall
+                                                                            </option>
+                                                                            <option value="Flex Space">Flex Space
+                                                                            </option>
+                                                                            <option value="Data Center">Data Center
+                                                                            </option>
+                                                                            <option value="Special Purpose Property">
+                                                                                Special Purpose Property</option>
+                                                                            <option
+                                                                                value="Agricultural Land (for commercial farming)">
+                                                                                Agricultural Land (for commercial
+                                                                                farming)</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div id="second-other" class="hide">
+                                                                        <br>
+                                                                        <label>Further describe your property
+                                                                            type<span>*</span></label>
+                                                                        <select name="other-select">
+                                                                            <option data-display="Select" value="">
+                                                                                Please select
+                                                                                one</option>
+                                                                            <option value="Mobile Homes">Mobile Homes
+                                                                            </option>
+                                                                            <option value="Cabins">Cabins</option>
+                                                                            <option value="Vacation Rentals">Vacation
+                                                                                Rentals</option>
+                                                                            <option value="Timeshares">Timeshares
+                                                                            </option>
+                                                                            <option value="Cooperative Housing">
+                                                                                Cooperative Housing</option>
+                                                                            <option value="Houseboats">Houseboats
+                                                                            </option>
+                                                                            <option value="Studios and Workshops">
+                                                                                Studios and Workshops</option>
+                                                                            <option value="Barns">Barns</option>
+                                                                            <option value="Lofts">Lofts</option>
+                                                                            <option value="Treehouses">Treehouses
+                                                                            </option>
+                                                                            <option value="Geodesic and Dome Homes">
+                                                                                Geodesic and Dome Homes</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Form Group -->
-                                                                <div class="form-group formify-mg-top-40">
-                                                                    <div class="formify-forms__button">
-                                                                        <button
-                                                                            class="formify-btn prev-step">Previous</button>
-                                                                        <button
-                                                                            class="formify-btn next-step">Next</button>
-                                                                    </div>
+                                                            </div>
+                                                            <!-- Form Group -->
+                                                            <div class="form-group formify-mg-top-40">
+                                                                <div class="formify-forms__button">
+                                                                    <span class="next-step hidden"></span>
+                                                                    <button
+                                                                        class="formify-btn prev-step">Previous</button>
+                                                                    <button class="formify-btn"
+                                                                        id="btn-second-step">Next</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- Form Group -->
                                                 </div>
 
                                                 <!-- Step 3 -->
@@ -564,14 +624,11 @@
                                                             Tell us more about the sale...?</h3>
                                                         <p class="formify-forms__quiz-text m-0"><span
                                                                 class="fa-solid fa-location-dot"></span>
-                                                                <span class="currentLocation"></span><a class="edit_link"
-                                                                href="./../">(edit)</a></p>
+                                                            <span class="currentLocation"></span><a class="edit_link"
+                                                                href="./../">(edit)</a>
+                                                        </p>
 
                                                         <div class="formify-forms__quiz-form formify-mg-top-20">
-
-
-
-
 
                                                             <div class="formify-forms__quiz-form formify-mg-top-20">
 
@@ -584,90 +641,230 @@
                                                                             <div class="">
                                                                                 <label>What is the Condition of the
                                                                                     Property?<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
-                                                                                    required="required">
+                                                                                <select name="property-condition">
+                                                                                    <option data-display="Select"
+                                                                                        value="">Please
+                                                                                        select a score out of 10
+                                                                                    </option>
+                                                                                    <option value="1">1 - Dilapidated
+                                                                                    </option>
+                                                                                    <option value="2">2 - Poor</option>
+                                                                                    <option value="3">3 - Fair</option>
+                                                                                    <option value="4">4 - Below Average
+                                                                                    </option>
+                                                                                    <option value="5">5 - Average
+                                                                                    </option>
+                                                                                    <option value="6">6 - Above Average
+                                                                                    </option>
+                                                                                    <option value="7">7 - Good</option>
+                                                                                    <option value="8">8 - Very Good
+                                                                                    </option>
+                                                                                    <option value="9">9 - Excellent
+                                                                                    </option>
+                                                                                    <option value="10">10 - Pristine
+                                                                                    </option>
+                                                                                </select>
                                                                             </div>
                                                                             <div class="">
                                                                                 <label>What is the Reason for the
                                                                                     Sale?<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
-                                                                                    required="required">
+                                                                                <select name="sale-reason" id="sale-reason">
+                                                                                    <option data-display="Select"
+                                                                                        value="">Please
+                                                                                        select one
+                                                                                    </option>
+                                                                                    <option value="Bought another">
+                                                                                        Bought another</option>
+                                                                                    <option value="Broken Chain">Broken
+                                                                                        Chain</option>
+                                                                                    <option value="Can't Sell">Can't
+                                                                                        Sell</option>
+                                                                                    <option value="Debt/ Financial">
+                                                                                        Debt/ Financial</option>
+                                                                                    <option value="Difficulty">
+                                                                                        Difficulty</option>
+                                                                                    <option
+                                                                                        value="Divorce / Separation">
+                                                                                        Divorce / Separation</option>
+                                                                                    <option value="Downsizing">
+                                                                                        Downsizing</option>
+                                                                                    <option value="Equity Release">
+                                                                                        Equity Release</option>
+                                                                                    <option value="Family Reason">Family
+                                                                                        Reason</option>
+                                                                                    <option value="General Enquiry">
+                                                                                        General Enquiry</option>
+                                                                                    <option value="III Health">III
+                                                                                        Health</option>
+                                                                                    <option value="Loss of Job">Loss of
+                                                                                        Job</option>
+                                                                                    <option
+                                                                                        value="Not selling just want 15. Cash Valuation">
+                                                                                        Not selling just want 15. Cash
+                                                                                        Valuation</option>
+                                                                                    <option
+                                                                                        value="Relocation / Probate">
+                                                                                        Relocation / Probate</option>
+                                                                                    <option value="Repossession">
+                                                                                        Repossession</option>
+                                                                                    <option value="Retirement">
+                                                                                        Retirement</option>
+                                                                                    <option value="Seen Another">Seen
+                                                                                        Another</option>
+                                                                                    <option
+                                                                                        value="Tired of being a Landlord">
+                                                                                        Tired of being a Landlord
+                                                                                    </option>
+                                                                                    <option value="Upsizing">Upsizing
+                                                                                    </option>
+                                                                                    <option value="other">other</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="hide" id="sale-reason-other">
+                                                                                <label>Other reason? please specify
+                                                                                    <span>*</span></label>
+                                                                                <input type="text" name="sale-reason-other"
+                                                                                    placeholder="Need some cash"
+                                                                                    required>
                                                                             </div>
                                                                             <div class="">
                                                                                 <label>What speed of sale is
                                                                                     needed?<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
-                                                                                    required="required">
+                                                                                <select name="speed-of-sale">
+                                                                                    <option data-display="Select"
+                                                                                        value="">Please
+                                                                                        select one
+                                                                                    </option>
+                                                                                    <option value="ASAP">ASAP</option>
+                                                                                    <option
+                                                                                        value="Within the next couple weeks">
+                                                                                        Within the next couple weeks
+                                                                                    </option>
+                                                                                    <option
+                                                                                        value="Within 1 month or so">
+                                                                                        Within 1 month or so</option>
+                                                                                    <option
+                                                                                        value="Within 3 months or so">
+                                                                                        Within 3 months or so</option>
+                                                                                    <option
+                                                                                        value="Within the next 6 months">
+                                                                                        Within the next 6 months
+                                                                                    </option>
+                                                                                    <option value="Sometime this Year">
+                                                                                        Sometime this Year</option>
+                                                                                    <option value="No real rush">No real
+                                                                                        rush</option>
+                                                                                </select>
                                                                             </div>
-                                                                            <div class="">
+                                                                            <div id="landlord-or-homeowner">
                                                                                 <label>Are you a Landlord or
                                                                                     Homeowner?<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
-                                                                                    required="required">
+                                                                                <select name="landlord-or-homeowner">
+                                                                                    <option data-display="Select"
+                                                                                        value="">Please
+                                                                                        select one
+                                                                                    </option>
+                                                                                    <option value="Landlord">Landlord
+                                                                                    </option>
+                                                                                    <option value="Homeowner">
+                                                                                        Homeowner</option>
+                                                                                </select>
                                                                             </div>
-                                                                            <div class="">
+                                                                            <div id="ownership-type" class="hide">
+                                                                                <label>What kind of
+                                                                                    ownership?<span>*</span></label>
+                                                                                <select name="ownership-type">
+                                                                                    <option data-display="Select"
+                                                                                        value="">Please
+                                                                                        select one
+                                                                                    </option>
+                                                                                    <!-- shared, sole, jointly owned -->
+                                                                                    <option value="Shared">Shared
+                                                                                        Ownership
+                                                                                    </option>
+                                                                                    <option value="Sole">Sole Ownership
+                                                                                    </option>
+                                                                                    <option value="Jointly Owned">
+                                                                                        Jointly Owned</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div>
                                                                                 <label>Is this the only property you
                                                                                     have to sell?<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
-                                                                                    required="required">
+                                                                                <select name="properties-for-sale-question"
+                                                                                    id="properties-for-sale-question">
+                                                                                    <option data-display="Select"
+                                                                                        value="">Please
+                                                                                        select one
+                                                                                    </option>
+                                                                                    <option value="Yes">Yes</option>
+                                                                                    <option value="No">No</option>
+                                                                                </select>
                                                                             </div>
-                                                                            <div class="">
+                                                                            <div class="hide"
+                                                                                id="properties-for-sale-answer">
                                                                                 <label>How many properties do you have
                                                                                     for sale?<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
+                                                                                <input type="number" placeholder="10"
+                                                                                    name="properties-for-sale-answer"
                                                                                     required="required">
                                                                             </div>
                                                                             <div class="">
                                                                                 <label>Is this property already on the
                                                                                     market?<span>*</span></label>
-                                                                                <input type="text" name="Select Type"
-                                                                                    placeholder="Select Type"
-                                                                                    required="required">
+                                                                                <!-- Yes, No, Strongly considering it, I want 100% off market confidential sale! -->
+                                                                                <select id="on-market-question" name="on-market-question">
+                                                                                    <option data-display="Select"
+                                                                                        value="">Please
+                                                                                        select one
+                                                                                    </option>
+                                                                                    <option value="Yes">Yes</option>
+                                                                                    <option value="No">No</option>
+                                                                                    <option
+                                                                                        value="Strongly considering it">
+                                                                                        Strongly considering it</option>
+                                                                                    <option
+                                                                                        value="I want 100% off market confidential sale!">
+                                                                                        I want 100% off market
+                                                                                        confidential
+                                                                                        sale!</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div id="on-market-answer" class="hide">
+                                                                                <!-- How long has it been on the market for  -->
+                                                                                <label>How long has it been on the
+                                                                                    market for?<span>*</span></label>
+                                                                                <select name="on-market-answer">
+                                                                                    <option data-display="Select"
+                                                                                        value="">Please
+                                                                                        select one
+                                                                                    </option>
+                                                                                    <option value="Less than 1 week">
+                                                                                        Less than 1 week</option>
+                                                                                    <option value="Less than 1 month">
+                                                                                        Less than 1 month</option>
+                                                                                    <option value="Less than 3 months">
+                                                                                        Less than 3 months</option>
+                                                                                    <option value="Less than 6 months">
+                                                                                        Less than 6 months</option>
+                                                                                    <option value="Less than 1 year">
+                                                                                        Less than 1 year</option>
+                                                                                    <option value="More than 1 year">
+                                                                                        More than 1 year</option>
+                                                                                </select>
                                                                             </div>
                                                                         </div>
-
-
-
-
-
-
-
-
-                                                                        <!--
-
-                                                                        </div>
-																		
-                                                                        <div class="col-12">
-                                                                            <div class="form-group">
-                                                                                <div class="formify-forms__input formify-forms__textarea">
-                                                                                    <label>Tell us about what you do</label>
-                                                                                    <textarea type="textarea" name="email" placeholder="Enter your tagline..." required="required"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
--->
 
                                                                     </div>
-
-
-
-
-
-
 
                                                                     <!-- Form Group -->
                                                                     <div class="form-group formify-mg-top-40">
                                                                         <div class="formify-forms__button">
+                                                                            <span class="next-step hidden"></span>
                                                                             <button
                                                                                 class="formify-btn prev-step">Previous</button>
                                                                             <button
-                                                                                class="formify-btn next-step">Next</button>
+                                                                                class="formify-btn" id="third-step">Next</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -679,6 +876,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <!-- Step 4 -->
                                                 <div class="tab-pane fade show active" id="step4">
                                                     <!-- Progress Bar -->
@@ -695,13 +893,11 @@
                                                     </div>
                                                     <!-- End Progress Bar -->
                                                     <div class="formify-forms__quiz-single">
-                                                        <h3
-                                                            class="formify-forms__quiz-title formify-forms__quiz-title--v6">
-                                                            Lets Talk Numbers...</h3>
                                                         <p class="formify-forms__quiz-text m-0"><span
                                                                 class="fa-solid fa-location-dot"></span>
-                                                                <span class="currentLocation"></span><a class="edit_link"
-                                                                href="./../">(edit)</a></p>
+                                                            <span class="currentLocation"></span><a class="edit_link"
+                                                                href="./../">(edit)</a>
+                                                        </p>
 
                                                         <div class="formify-forms__quiz-form formify-mg-top-20">
                                                             <div
@@ -713,93 +909,140 @@
                                                                         <div class="">
                                                                             <label>How much do you owe on the
                                                                                 Property?<span>*</span></label>
-                                                                            <input type="text" name="Select Type"
-                                                                                placeholder="Select Type"
+                                                                            <input type="number" placeholder="£500" name="debt-on-property"
                                                                                 required="required">
                                                                         </div>
                                                                         <div class="">
                                                                             <label>How much do you believe the property
                                                                                 is worth?<span>*</span></label>
-                                                                            <input type="text" name="Select Type"
-                                                                                placeholder="Select Type"
+                                                                            <input type="number" placeholder="£500000" name="property-worth"
                                                                                 required="required">
                                                                         </div>
                                                                         <div class="">
                                                                             <label>Are their any additional debts on the
                                                                                 property?<span>*</span></label>
-                                                                            <input type="text" name="Select Type"
-                                                                                placeholder="Select Type"
-                                                                                required="required">
+                                                                            <select name="additional-debts" id="additional-debts">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Yes">Yes</option>
+                                                                                <option value="No">No</option>
+                                                                            </select> </select>
                                                                         </div>
-                                                                        <div class="">
+                                                                        <div class="hide" id="additional-debts-answer">
                                                                             <label>How much additional debts do you
                                                                                 owe?<span>*</span></label>
-                                                                            <input type="text" name="Select Type"
-                                                                                placeholder="Select Type"
+                                                                            <input type="number" placeholder="£500" name="additional-debts-answer"
                                                                                 required="required">
                                                                         </div>
                                                                         <div class="">
                                                                             <label>Select the best day and time to call
                                                                                 you back?<span>*</span></label>
-                                                                            <input type="text" name="Select Type"
-                                                                                placeholder="Select Type"
+                                                                            <input type="datetime-local" name="call-back-time"
                                                                                 required="required">
                                                                         </div>
                                                                         <div class="">
                                                                             <label>How did you hear about Sale
                                                                                 Swift?<span>*</span></label>
-                                                                            <input type="text" name="Select Type"
-                                                                                placeholder="Select Type"
-                                                                                required="required">
+                                                                            <select name="hear-about-us">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Word of Mouth">Word of
+                                                                                    Mouth</option>
+                                                                                <option value="Online Reviews">Online
+                                                                                    Reviews</option>
+                                                                                <option value="Social Media">Social
+                                                                                    Media</option>
+                                                                                <option value="Search Engines">Search
+                                                                                    Engines</option>
+                                                                                <option value="Local Directories">Local
+                                                                                    Directories</option>
+                                                                                <option value="Television Ads">
+                                                                                    Television Ads</option>
+                                                                                <option value="Radio Ads">Radio Ads
+                                                                                </option>
+                                                                                <option value="Print Media">Print Media
+                                                                                </option>
+                                                                                <option value="Outdoor Advertising">
+                                                                                    Outdoor Advertising</option>
+                                                                                <option value="Email Marketing">Email
+                                                                                    Marketing</option>
+                                                                                <option value="Events and Trade Shows">
+                                                                                    Events and Trade Shows</option>
+                                                                                <option value="Sponsorships">
+                                                                                    Sponsorships</option>
+                                                                                <option value="Business Websites">
+                                                                                    Business Websites</option>
+                                                                                <option value="Referral Programs">
+                                                                                    Referral Programs</option>
+                                                                                <option value="Community Involvement">
+                                                                                    Community Involvement</option>
+                                                                                <option value="Mobile Apps">Mobile Apps
+                                                                                </option>
+                                                                                <option value="Public Relations">Public
+                                                                                    Relations</option>
+                                                                                <option value="Blogs and Influencers">
+                                                                                    Blogs and Influencers</option>
+                                                                                <option value="Podcasts">Podcasts
+                                                                                </option>
+                                                                                <option value="Google Maps and GPS">
+                                                                                    Google Maps and GPS</option>
+                                                                                <option value="Promotional Materials">
+                                                                                    Promotional Materials</option>
+                                                                                <option value="Customer Testimonials">
+                                                                                    Customer Testimonials</option>
+                                                                                <option value="Online Forums">Online
+                                                                                    Forums</option>
+                                                                                <option value="Trade Publications">Trade
+                                                                                    Publications</option>
+                                                                                <option value="Business Networking">
+                                                                                    Business Networking</option>
+                                                                                <option value="Vehicles and Wraps">
+                                                                                    Vehicles and Wraps</option>
+                                                                                <option value="Text Message Marketing">
+                                                                                    Text Message Marketing</option>
+                                                                                <option
+                                                                                    value="Customer Loyalty Programs">
+                                                                                    Customer Loyalty Programs</option>
+                                                                                <option value="Direct Mail">Direct Mail
+                                                                                </option>
+                                                                                <option value="In-Store Signage">
+                                                                                    In-Store Signage</option>
+                                                                            </select>
                                                                         </div>
-
+                                                                        <div class="flex mt-4">
+                                                                            <input type="checkbox" name="marketing" class="mr-4">
+                                                                            I would like to receive marketing
+                                                                            communications from Sale Swift
+                                                                        </div>
                                                                     </div>
 
 
 
-
-
-
-
-
-                                                                    <!--
-
+                                                                    <!-- Form Group -->
+                                                                    <div class="form-group formify-mg-top-40">
+                                                                        <div class="formify-forms__button">
+                                                                            <span class="next-step hidden"></span>
+                                                                            <button
+                                                                                class="formify-btn prev-step">Previous</button>
+                                                                            <button
+                                                                                class="formify-btn" id="fourth-step">Next</button>
                                                                         </div>
-																		
-                                                                        <div class="col-12">
-                                                                            <div class="form-group">
-                                                                                <div class="formify-forms__input formify-forms__textarea">
-                                                                                    <label>Tell us about what you do</label>
-                                                                                    <textarea type="textarea" name="email" placeholder="Enter your tagline..." required="required"></textarea>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
--->
-
-                                                                </div>
-
-
-
-                                                                <!-- Form Group -->
-                                                                <div class="form-group formify-mg-top-40">
-                                                                    <div class="formify-forms__button">
-                                                                        <button
-                                                                            class="formify-btn prev-step">Previous</button>
-                                                                        <button
-                                                                            class="formify-btn next-step">Next</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <!-- Form Group -->
                                                     </div>
-                                                    <!-- Form Group -->
                                                 </div>
 
                                                 <!-- Step 5 -->
                                                 <div class="tab-pane fade show active" id="step5">
                                                     <!-- Progress Bar -->
                                                     <div class="formify-steps-progress">
-                                                        <h4 class="formify-steps-progress__title">Step 5 <span></span>
+                                                        <h4 class="formify-steps-progress__title">Step 5
+                                                            <span></span>
                                                         </h4>
                                                         <div class="formify-steps-progress__list">
                                                             <div class="formify-steps-list__single done"></div>
@@ -811,126 +1054,124 @@
                                                     </div>
                                                     <!-- End Progress Bar -->
                                                     <div class="formify-forms__quiz-single">
-                                                        <h3
-                                                            class="formify-forms__quiz-title formify-forms__quiz-title--v6">
-                                                            Take advantage of our network &amp; available discounts</h3>
                                                         <p class="formify-forms__quiz-text m-0"><span
                                                                 class="fa-solid fa-location-dot"></span>
-                                                                <span class="currentLocation"></span><a class="edit_link"
-                                                                href="./../">(edit)</a></p>
+                                                            <span class="currentLocation"></span><a class="edit_link"
+                                                                href="./../">(edit)</a>
+                                                        </p>
                                                         <div class="formify-forms__quiz-form formify-mg-top-20">
                                                             <div
                                                                 class="formify-forms__quiz-form formify-forms__quiz-form--selectv6">
 
-                                                                <!-- Single Group -->
-                                                                <div class="form-group formify-mg-top-15">
-                                                                    <div
-                                                                        class="formify-forms__input formify-forms__input--quiz">
-                                                                        <input class="formify-forms__input d-none"
-                                                                            type="radio" value="" id="q-15"
-                                                                            name="q-question" checked>
-                                                                        <label class="formify-forms__input--quiz-label"
-                                                                            for="q-15">
-                                                                            <div class="formify-forms__quiz-check">
-                                                                            </div>
-                                                                            <div class="formify-forms__quiz-value">Would
-                                                                                ou like a free consultation to prevent
-                                                                                tennant disputes with the TDS and insure
-                                                                                your assets through deposits</div>
-                                                                        </label>
+                                                                <div id="landlord-last" class="hide">
+                                                                    <!-- Single Group -->
+                                                                    <div class="form-group formify-mg-top-15">
+                                                                        <div
+                                                                            class="formify-forms__input formify-forms__input--quiz">
+                                                                            <input class="formify-forms__input d-none"
+                                                                                type="checkbox" id="q-15"
+                                                                                name="free-consultation">
+                                                                            <label class="formify-forms__input--quiz-label"
+                                                                                for="q-15">
+                                                                                <div class="formify-forms__quiz-check">
+                                                                                </div>
+                                                                                <div class="formify-forms__quiz-value">
+                                                                                    Would
+                                                                                    you like a free consultation to
+                                                                                    prevent
+                                                                                    tennant disputes with the TDS and
+                                                                                    insure
+                                                                                    your assets through deposits</div>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Single Group -->
+                                                                    <div class="form-group formify-mg-top-15">
+                                                                        <div
+                                                                            class="formify-forms__input formify-forms__input--quiz">
+                                                                            <input class="formify-forms__input d-none"
+                                                                                type="checkbox" id="q-16"
+                                                                                name="cash-offer">
+                                                                            <label class="formify-forms__input--quiz-label"
+                                                                                for="q-16">
+                                                                                <div class="formify-forms__quiz-check">
+                                                                                </div>
+                                                                                <div class="formify-forms__quiz-value">
+                                                                                    Would
+                                                                                    you like a guaranteed cash offer on
+                                                                                    your entire portfolio</div>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Single Group -->
-                                                                <div class="form-group formify-mg-top-15">
-                                                                    <div
-                                                                        class="formify-forms__input formify-forms__input--quiz">
-                                                                        <input class="formify-forms__input d-none"
-                                                                            type="radio" value="" id="q-16"
-                                                                            name="q-question">
-                                                                        <label class="formify-forms__input--quiz-label"
-                                                                            for="q-16">
-                                                                            <div class="formify-forms__quiz-check">
-                                                                            </div>
-                                                                            <div class="formify-forms__quiz-value">Would
-                                                                                you like a guaranteed cash offerr on
-                                                                                your entire portfolio</div>
-                                                                        </label>
+
+                                                                <div id="non-landlord-last" class="hide">
+                                                                    <!-- Single Group -->
+                                                                    <div class="form-group formify-mg-top-15">
+                                                                        <div
+                                                                            class="formify-forms__input formify-forms__input--quiz">
+                                                                            <input class="formify-forms__input d-none"
+                                                                                type="checkbox" id="q-17"
+                                                                                name="half-price-legal-services">
+                                                                            <label class="formify-forms__input--quiz-label"
+                                                                                for="q-17">
+                                                                                <div class="formify-forms__quiz-check">
+                                                                                </div>
+                                                                                <div class="formify-forms__quiz-value">
+                                                                                    Do
+                                                                                    you want half price legal services
+                                                                                    for
+                                                                                    your property sale?</div>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Single Group -->
+                                                                    <div class="form-group formify-mg-top-15">
+                                                                        <div
+                                                                            class="formify-forms__input formify-forms__input--quiz">
+                                                                            <input class="formify-forms__input d-none"
+                                                                                type="checkbox" id="q-18"
+                                                                                name="removal-services">
+                                                                            <label class="formify-forms__input--quiz-label"
+                                                                                for="q-18">
+                                                                                <div class="formify-forms__quiz-check">
+                                                                                </div>
+                                                                                <div class="formify-forms__quiz-value">
+                                                                                    Woukd
+                                                                                    you like to take advantage of our
+                                                                                    discounted removal services?</div>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Single Group -->
+                                                                    <div class="form-group formify-mg-top-15">
+                                                                        <div
+                                                                            class="formify-forms__input formify-forms__input--quiz"
+                                                                            onclick="toggleCheckLabel(this)">
+                                                                            <input class="formify-forms__input d-none"
+                                                                                type="checkbox" id="q-19"
+                                                                                name="onwards-purchase">
+                                                                            <label class="formify-forms__input--quiz-label"
+                                                                                for="q-19">
+                                                                                <div class="formify-forms__quiz-check">
+                                                                                </div>
+                                                                                <div class="formify-forms__quiz-value">
+                                                                                    Do
+                                                                                    you require help with your onwards
+                                                                                    purchase?</div>
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Single Group -->
-                                                                <div class="form-group formify-mg-top-15">
-                                                                    <div
-                                                                        class="formify-forms__input formify-forms__input--quiz">
-                                                                        <input class="formify-forms__input d-none"
-                                                                            type="radio" value="" id="q-17"
-                                                                            name="q-question">
-                                                                        <label class="formify-forms__input--quiz-label"
-                                                                            for="q-17">
-                                                                            <div class="formify-forms__quiz-check">
-                                                                            </div>
-                                                                            <div class="formify-forms__quiz-value">Do
-                                                                                you want half price legal services for
-                                                                                your property sale?</div>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Single Group -->
-                                                                <div class="form-group formify-mg-top-15">
-                                                                    <div
-                                                                        class="formify-forms__input formify-forms__input--quiz">
-                                                                        <input class="formify-forms__input d-none"
-                                                                            type="radio" value="" id="q-18"
-                                                                            name="q-question">
-                                                                        <label class="formify-forms__input--quiz-label"
-                                                                            for="q-18">
-                                                                            <div class="formify-forms__quiz-check">
-                                                                            </div>
-                                                                            <div class="formify-forms__quiz-value">Woukd
-                                                                                you like to take advantage of our
-                                                                                discounted removal services?</div>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Single Group -->
-                                                                <div class="form-group formify-mg-top-15">
-                                                                    <div
-                                                                        class="formify-forms__input formify-forms__input--quiz">
-                                                                        <input class="formify-forms__input d-none"
-                                                                            type="radio" value="" id="q-19"
-                                                                            name="q-question">
-                                                                        <label class="formify-forms__input--quiz-label"
-                                                                            for="q-19">
-                                                                            <div class="formify-forms__quiz-check">
-                                                                            </div>
-                                                                            <div class="formify-forms__quiz-value">Do
-                                                                                you require help with your onwards
-                                                                                purchase?</div>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- Single Group -->
-                                                                <div class="form-group formify-mg-top-15">
-                                                                    <div
-                                                                        class="formify-forms__input formify-forms__input--quiz">
-                                                                        <input class="formify-forms__input d-none"
-                                                                            type="radio" value="" id="q-20"
-                                                                            name="q-question">
-                                                                        <label class="formify-forms__input--quiz-label"
-                                                                            for="q-20">
-                                                                            <div class="formify-forms__quiz-check">
-                                                                            </div>
-                                                                            <div class="formify-forms__quiz-value">No
-                                                                                thanks im fine for now</div>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
+
                                                                 <!-- Form Group -->
                                                                 <div class="form-group formify-mg-top-40">
                                                                     <div class="formify-forms__button">
+                                                                        <span class="next-step hidden"></span>
                                                                         <button
                                                                             class="formify-btn prev-step">Previous</button>
                                                                         <button
-                                                                            class="formify-btn next-step">Next</button>
+                                                                            class="formify-btn" id="fifth-step">Next</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -939,25 +1180,41 @@
                                                     <!-- Form Group -->
                                                 </div>
 
-                                                <!-- Step 5 -->
+                                                <!-- Step 6 -->
                                                 <div class="tab-pane fade" id="step5">
                                                     <div
                                                         class="formify-forms__quiz-single formify-forms__quiz-single--welcome">
                                                         <div class="formify-forms__quiz-single--welcome-main">
                                                             <div class="formify-images formify-mg-btm-40">
-                                                                <img
-                                                                    src="./../images/add-property/formify-progress-done.svg">
+                                                                <img src="./../images/add-property/success.gif">
                                                             </div>
-                                                            <div class="formify-forms__quiz-single--welcome-content">
-                                                                <h3
-                                                                    class="formify-forms__quiz-title formify-forms__quiz-title--v6">
-                                                                    Congratulations &amp; welcome to SaleSwift!</h3>
-                                                                <p>Congratulations! Your Picmaic account has been
-                                                                    completed and now you can utilise it to its maximum
-                                                                    capacity.</p>
+                                                            <div
+                                                                class="formify-forms__quiz-single--welcome-content text-start">
+                                                                <h2>Thank you <span class="customer-name">Jerry</span>
+                                                                </h2>
+                                                                <p class="mb-4 medium-text">Lorem ipsum dolor sit
+                                                                    amet
+                                                                    consectetur adipisicing elit. Exercitationem
+                                                                    reiciendis natus sed. Sed ab cumque rem omnis
+                                                                    autem
+                                                                    voluptatibus a, temporibus ut optio pariatur
+                                                                    assumenda tenetur voluptatem ipsam, doloribus
+                                                                    illum.
+                                                                </p>
+                                                                <p class="medium-text">Lorem ipsum dolor sit amet
+                                                                    consectetur adipisicing elit. Exercitationem
+                                                                    reiciendis natus sed. Sed ab cumque rem omnis
+                                                                    autem
+                                                                    voluptatibus a, temporibus ut optio pariatur
+                                                                    assumenda tenetur voluptatem ipsam, doloribus
+                                                                    illum.
+                                                                </p>
+                                                                <img src="./../images/add-property/thank-you-man.avif"
+                                                                    class="thank-you-man" alt="Image of JP">
+                                                                <h4>J P Skeete</h4>
                                                             </div>
-                                                            <button class="formify-btn formify-mg-top-30">Submit Another
-                                                                Property</button>
+                                                            <a class="formify-btn formify-mg-top-30 disable-anchor-effect"
+                                                                href="/">Submit Another Property</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -985,7 +1242,7 @@
     <script src="./../js/add-property/popper.min.js"></script>
     <script src="./../js/add-property/bootstrap.min.js"></script>
     <script src="./../js/add-property/final-countdown.min.js"></script>
-    <script src="./../js/add-property/nice-select.min.js"></script>
+    <!-- <script src="./../js/add-property/nice-select.min.js"></script> -->
     <script src="./../js/add-property/main.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 

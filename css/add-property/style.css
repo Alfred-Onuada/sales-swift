@@ -5055,7 +5055,7 @@ background-color: #1665D8;
 	display: flex;
 	flex-direction: column;
 	align-items: center !important;
-	max-width: 480px;
+	width: 100%;
 	text-align: center;
 }
 
@@ -6865,4 +6865,75 @@ background-color: #1665D8;
 
 .edit_link {
 	margin-left: 10px;
+}
+
+.disable-anchor-effect:hover {
+	color: white
+}
+
+.medium-text {
+	font-size: 16px;
+}
+
+.flex {
+	display: flex;
+}
+
+.thank-you-man {
+	border-radius: 50%;
+	height: 100px;
+	width: 100px;
+	margin: 20px 0px;
+}
+
+.hidden {
+	visibility: none;
+}
+
+.hide {
+	display: none;
+}
+
+.custom-radio {
+	padding: 15px 10px;
+	border-radius: 5px;
+	border: 1px solid gray;
+	width: fit-content;
+}
+
+.custom-radio:hover {
+	background-color: #4065ec;
+	border: 0.5px solid gray;
+}
+
+.custom-radio h4 {
+	margin: 0px;
+	color: black;
+	font-size: 14px;
+}
+
+.custom-radio:hover h4 {
+	color: white;
+}
+
+.custom-select-active {
+	background-color: #4065ec;
+	border: 0.5px solid gray;
+}
+
+.custom-select-active h4{
+	color: white;
+}
+
+.custom-select-circle {
+	margin-right: 10px;
+	height: 20px;
+	width: 20px;
+	border-radius: 50%;
+	background-color: white;
+	border: 1px solid lightblue;
+}
+
+.mr-20 {
+	margin-right: 20px;
 }
