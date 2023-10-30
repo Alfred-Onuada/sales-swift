@@ -54,7 +54,7 @@ async function beginFormProcessing() {
         }
 
         if (type === 'phone') {
-          return value.match(/^\d{10}$/); // TODO: check this is correct for UK
+          return value.match(/^\d{11}/) && value.match(/^\d+$/);
         }
 
         if (type === 'email') {
@@ -408,3 +408,12 @@ async function beginFormProcessing() {
 }
 
 document.addEventListener('DOMContentLoaded', beginFormProcessing);
+
+
+
+
+
+/*
+  TODO: make everything responsive
+  TODO: submit the allData object to the server
+ */
