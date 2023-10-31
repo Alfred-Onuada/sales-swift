@@ -54,7 +54,7 @@ async function beginFormProcessing() {
         }
 
         if (type === 'phone') {
-          return value.match(/^\d{11}/) && value.match(/^\d+$/);
+          return value.replace(/\s/g, "").match(/^\d{11}/) && value.replace(/\s/g, "").match(/^\d+$/);
         }
 
         if (type === 'email') {
@@ -315,6 +315,11 @@ async function beginFormProcessing() {
 
     // Begin fourth step controls
     function fourthStepControls () {
+      // add the date and time constraint to the date and time input (min today, max this time next year)
+      const datePicker = document.querySelector("input[name='call-back-time']");
+      datePicker.min = new Date().toISOString().replace(/\..*$/, "");
+      datePicker.max = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().replace(/\..*$/, "");
+
       document.getElementById('additional-debts').addEventListener('change', function (e) {
         if (e.target.value == 'Yes') {
           document.getElementById('additional-debts-answer').classList.remove('hide');
@@ -414,6 +419,7 @@ document.addEventListener('DOMContentLoaded', beginFormProcessing);
 
 
 /*
-  TODO: make everything responsive
+  TODO: make everything properly responsive
   TODO: submit the allData object to the server
+  TODO: handle errors better by using a toast and telling them the exact fields that fail
  */
