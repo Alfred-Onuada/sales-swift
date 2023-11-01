@@ -768,6 +768,8 @@
                                                                                     </option>
                                                                                     <option value="Homeowner">
                                                                                         Homeowner</option>
+                                                                                    <option value="Homeowner_And_Landlord">
+                                                                                        Homeowner & Landlord</option>
                                                                                 </select>
                                                                             </div>
                                                                             <div id="ownership-type" class="hide">
@@ -936,10 +938,34 @@
                                                                                 required="required">
                                                                         </div>
                                                                         <div class="">
-                                                                            <label>Select the best day and time to call
-                                                                                you back?<span>*</span></label>
-                                                                            <input type="datetime-local" name="call-back-time"
-                                                                                required="required">
+                                                                            <label>Select the best day to call you?<span>*</span></label>
+                                                                            <select name="day-to-call-back">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Mondays">Mondays</option>
+                                                                                <option value="Tuesdays">Tuesdays</option>
+                                                                                <option value="Wednesdays">Wednesdays</option>
+                                                                                <option value="Thursday">Thursday</option>
+                                                                                <option value="Fridays">Fridays</option>
+                                                                                <option value="Saturdays">Saturdays</option>
+                                                                                <option value="Sunday">Sunday</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="">
+                                                                            <label>Select time to call
+                                                                                you?<span>*</span></label>
+                                                                            <select name="time-to-call-back">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="12am-4am">12am-4am</option>
+                                                                                <option value="4am-8am">4am-8am</option>
+                                                                                <option value="8am-12pm">8am-12pm</option>
+                                                                                <option value="12pm-4pm">12pm-4pm</option>
+                                                                                <option value="4pm-8pm">4pm-8pm</option>
+                                                                                <option value="8pm-12am">8pm-12am</option>
+                                                                            </select>
                                                                         </div>
                                                                         <div class="">
                                                                             <label>How did you hear about Sale
@@ -1146,8 +1172,7 @@
                                                                     <!-- Single Group -->
                                                                     <div class="form-group formify-mg-top-15">
                                                                         <div
-                                                                            class="formify-forms__input formify-forms__input--quiz"
-                                                                            onclick="toggleCheckLabel(this)">
+                                                                            class="formify-forms__input formify-forms__input--quiz">
                                                                             <input class="formify-forms__input d-none"
                                                                                 type="checkbox" id="q-19"
                                                                                 name="onwards-purchase">

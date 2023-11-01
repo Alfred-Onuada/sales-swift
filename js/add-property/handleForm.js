@@ -234,14 +234,18 @@ async function beginFormProcessing() {
       })
 
       document.getElementById('landlord-or-homeowner').addEventListener('change', function (e) {
-        if (e.target.value == 'Homeowner') {
-          document.getElementById('ownership-type').classList.remove('hide');
-          document.getElementById('landlord-last').classList.add('hide');
-          document.getElementById('non-landlord-last').classList.remove('hide');
-        } else {
+        if (e.target.value == 'Landlord') {
           document.getElementById('ownership-type').classList.add('hide');
           document.getElementById('landlord-last').classList.remove('hide');
           document.getElementById('non-landlord-last').classList.add('hide');
+        } else if (e.target.value == 'Homeowner') {
+          document.getElementById('ownership-type').classList.remove('hide');
+          document.getElementById('landlord-last').classList.add('hide');
+          document.getElementById('non-landlord-last').classList.remove('hide');
+        } else if (e.target.value == 'Homeowner_And_Landlord') {
+          document.getElementById('ownership-type').classList.remove('hide');
+          document.getElementById('landlord-last').classList.remove('hide');
+          document.getElementById('non-landlord-last').classList.remove('hide');
         }
       })
 
@@ -315,11 +319,6 @@ async function beginFormProcessing() {
 
     // Begin fourth step controls
     function fourthStepControls () {
-      // add the date and time constraint to the date and time input (min today, max this time next year)
-      const datePicker = document.querySelector("input[name='call-back-time']");
-      datePicker.min = new Date().toISOString().replace(/\..*$/, "");
-      datePicker.max = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().replace(/\..*$/, "");
-
       document.getElementById('additional-debts').addEventListener('change', function (e) {
         if (e.target.value == 'Yes') {
           document.getElementById('additional-debts-answer').classList.remove('hide');
@@ -337,7 +336,8 @@ async function beginFormProcessing() {
         'additional-debts-answer': 'string',
         'debt-on-property': 'string',
         'property-worth': 'string',
-        'call-back-time': 'string',
+        'time-to-call-back': 'string',
+        'day-to-call-back': 'string',
         'hear-about-us': 'string',
         'marketing': 'string'
       }
@@ -393,8 +393,6 @@ async function beginFormProcessing() {
         return [key, document.querySelector(`[name="${key}"]`).checked.toString()]
       }));
 
-      console.log(fields);
-
       const fieldsAreComplete = checkCompleteness(fields, neededFields);
       const fieldsAreValid = checkValidity(fields, neededFields);
 
@@ -406,6 +404,9 @@ async function beginFormProcessing() {
 
       updateAllData(fields);
       fifthStepBtn.parentElement.querySelector('.next-step').click();
+
+      // NOTE: this is the data to submit
+      console.log(allData);
     });
   } catch (error) {
     alert('Something went wrong, please try reload the page and try again');
@@ -414,12 +415,6 @@ async function beginFormProcessing() {
 
 document.addEventListener('DOMContentLoaded', beginFormProcessing);
 
-
-
-
-
 /*
-  TODO: make everything properly responsive
   TODO: submit the allData object to the server
-  TODO: handle errors better by using a toast and telling them the exact fields that fail
  */
