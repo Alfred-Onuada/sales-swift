@@ -27,7 +27,13 @@ async function beginFormProcessing() {
       const fields = {};
 
       Object.keys(neededFields).forEach(function (key) {
-        const value = document.querySelector(`[name="${key}"]`).value;
+        let value = null;
+        if (neededFields[key] === 'array') {
+          value = getValueOfMultipleSelect(document.querySelector(`[name="${key}"]`));
+        } else {
+          value = document.querySelector(`[name="${key}"]`).value;
+        }
+
         fields[key] = value;
       });
 
@@ -37,7 +43,7 @@ async function beginFormProcessing() {
     // checks that the fields are present
     function checkCompleteness(fields, neededFields) {
       const fieldsAreComplete = Object.keys(neededFields).every(function (key) {
-        return fields.hasOwnProperty(key) && fields[key] !== '';
+        return fields.hasOwnProperty(key) && (fields[key] !== '' || fields[key].length > 0);
       });
 
       return fieldsAreComplete;
@@ -61,11 +67,28 @@ async function beginFormProcessing() {
           return value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
         }
 
+        if (type === 'array') {
+          return Array.isArray(value);
+        }
+
         return false;
       });
 
       return fieldsAreValid;
     }
+
+    function getValueOfMultipleSelect(select) {
+      const options = select.options;
+      const selected = [];
+
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].selected && options[i].value !== '') {
+          selected.push(options[i].value);
+        }
+      }
+
+      return selected;
+    } 
 
     const firstStepBtn = document.getElementById('first-step');
     const secondStepBtn = document.getElementById('btn-second-step');
@@ -336,8 +359,8 @@ async function beginFormProcessing() {
         'additional-debts-answer': 'string',
         'debt-on-property': 'string',
         'property-worth': 'string',
-        'time-to-call-back': 'string',
-        'day-to-call-back': 'string',
+        'time-to-call-back': 'array',
+        'day-to-call-back': 'array',
         'hear-about-us': 'string',
         'marketing': 'string'
       }
@@ -403,6 +426,9 @@ async function beginFormProcessing() {
       }
 
       updateAllData(fields);
+
+      // update the name with the first and last name
+      document.getElementById('customer-name').textContent = `${allData['first-name']} ${allData['last-name']}`;
       fifthStepBtn.parentElement.querySelector('.next-step').click();
 
       // NOTE: this is the data to submit
