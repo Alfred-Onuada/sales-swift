@@ -1,17 +1,16 @@
 async function beginFormProcessing() {
   try {
-    const retrieveApiUrl = "https://api.addressy.com/Capture/Interactive/Retrieve/v1.2/json3ex.ws"
-    const access_token = "FY37-ZU98-DA44-DA26";
+    const retrieveApiUrl = "https://api.os.uk/search/places/v1/uprn?key=K3zVR0BhE9ADVPAEjXJBBeTeIKL0PFyT&format=JSON"
 
     const currentLocationSpan = document.getElementsByClassName('currentLocation');
     const currentLocationFromUrl = decodeURI(window.location.search.replace('?id=', ''));
 
-    const resp = await fetch(`${retrieveApiUrl}?Key=${encodeURIComponent(access_token)}&Id=${encodeURIComponent(currentLocationFromUrl)}`);
+    const resp = await fetch(`${retrieveApiUrl}&uprn=${currentLocationFromUrl}`);
     const data = await resp.json();
 
     if (currentLocationFromUrl) {
       [].forEach.call(currentLocationSpan, function (el) {
-        el.innerHTML = data.Items[0].Label;
+        el.innerHTML = data.results[0].DPA.ADDRESS;
       });
     }
 

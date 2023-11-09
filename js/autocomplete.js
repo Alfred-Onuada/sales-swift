@@ -1,5 +1,4 @@
 function initializeAutoComplete() {
-  // THIS IS A PRE-WRITTEN FUNCTION  
   function showAutoCompletion(input, val, options) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -29,25 +28,16 @@ function initializeAutoComplete() {
 
     for (i = 0; i < options.length; i++) {
       const b = document.createElement("DIV");
-      b.innerHTML = highlightMatch(options[i].Text);
-      b.dataset.name = options[i].Text;
-      b.dataset.id = options[i].Id;
+      b.innerHTML = highlightMatch(options[i].ADDRESS);
+      b.dataset.name = options[i].ADDRESS;
+      b.dataset.id = options[i].UPRN;
 
-      if (options[i].Type != 'Address') {
-        b.innerHTML += `<span class="extra-address-text">${options[i].Description}</span><span class="fa-solid fa-angle-right angle-right-search"></span>`;
-        b.addEventListener("click", function(e) {
-          closeAllLists();
-
-          getAddresses(this.dataset.id);
-        })
-      } else {
-        b.addEventListener("click", function(e) {
-          input.value = this.dataset.name;
-          closeAllLists();
-          
-          window.location.href = `pages/add-property.html?id=${encodeURIComponent(this.dataset.id)}`
-        })
-      }
+      b.addEventListener("click", function(e) {
+        input.value = this.dataset.name;
+        closeAllLists();
+        
+        window.location.href = `pages/add-property.html?id=${encodeURIComponent(this.dataset.id)}`
+      })
 
       a.appendChild(b);
     }
@@ -68,7 +58,6 @@ function initializeAutoComplete() {
       closeAllLists(e.target);
     });
   }
-  // END OF PRE-WRITTEN FUNCTION
 
   function debounce(func, delay) {
     let timeout;
@@ -80,27 +69,13 @@ function initializeAutoComplete() {
     };
   }
 
-  async function getAddresses(containerId) {
+  async function searchLocation(input) {
     try {
       const searchTerm = input.value;
-      const resp = await fetch(`${findApiUrl}?Key=${encodeURIComponent(access_token)}&Text=${encodeURIComponent(searchTerm)}&Language=en-gb&Origin=GBR&Countries=GBR&Container=${encodeURIComponent(containerId)}`);
+      const resp = await fetch(`${findApiUrl}&query=${searchTerm}`);
       const data = await resp.json();
 
-      const suggestions = data.Items;
-
-      showAutoCompletion(input, searchTerm, suggestions);
-    } catch (error) {
-      showAutoCompletion(input, searchTerm, []);
-    }
-  }
-
-  async function searchPostcode(input) {
-    try {
-      const searchTerm = input.value;
-      const resp = await fetch(`${findApiUrl}?Key=${encodeURIComponent(access_token)}&Text=${encodeURIComponent(searchTerm)}&Language=en-gb&Limit=10&Origin=GBR&Countries=GBR`);
-      const data = await resp.json();
-
-      const suggestions = data.Items;
+      const suggestions = data.results.map(result => result.DPA);
 
       showAutoCompletion(input, searchTerm, suggestions);
     } catch (error) {
@@ -110,12 +85,11 @@ function initializeAutoComplete() {
 
   const input = document.getElementById('postcode-search');
   const searchBtn = document.getElementById('search-btn');
-  const access_token = "FY37-ZU98-DA44-DA26";
-  const findApiUrl = "https://api.addressy.com/Capture/Interactive/Find/v1.1/json3ex.ws"
+  const findApiUrl = "https://api.os.uk/search/places/v1/find?key=K3zVR0BhE9ADVPAEjXJBBeTeIKL0PFyT&format=JSON&maxresults=10";
 
   if (input) {
-    input.addEventListener('keyup', () => debounce(searchPostcode(input), 500));
-    searchBtn.addEventListener('click', () => debounce(searchPostcode(input), 0));
+    input.addEventListener('keyup', () => debounce(searchLocation(input), 500));
+    searchBtn.addEventListener('click', () => debounce(searchLocation(input), 0));
   }
 }
 
