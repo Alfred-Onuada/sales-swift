@@ -6937,3 +6937,16 @@ background-color: #1665D8;
 .mr-20 {
 	margin-right: 20px;
 }
+
+/* Small devices (min-width: 576px) (max-width: 767.98px) // (landscape phones, less than 768px) */
+@media only screen and (max-width: 767.98px) {
+	.property-type {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.property-type div {
+		width: 100%;
+    margin-bottom: 5px;
+	}
+}
