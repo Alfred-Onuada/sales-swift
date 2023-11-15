@@ -26,10 +26,26 @@ function initializeAutoComplete() {
       return str.replace(new RegExp(val, "gi"), (match) => `<strong>${match}</strong>`);
     }
 
+    function makeIntialsCapital(str) {
+      const matches = str.match(/[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/g)
+      const postcode = matches ? matches[0] : "";
+
+      // remove postcode from string
+      str = str.replace(postcode, "");
+
+      return str
+        .trim()
+        .toLowerCase()
+        .split(" ")
+        .map(e => e[0].toUpperCase() + e.slice(1))
+        .join(" ")
+        .concat(" " + postcode);
+    }
+
     for (i = 0; i < options.length; i++) {
       const b = document.createElement("DIV");
-      b.innerHTML = highlightMatch(options[i].ADDRESS);
-      b.dataset.name = options[i].ADDRESS;
+      b.innerHTML = highlightMatch(makeIntialsCapital(options[i].ADDRESS));
+      b.dataset.name = makeIntialsCapital(options[i].ADDRESS);
       b.dataset.id = options[i].UPRN;
 
       b.addEventListener("click", function(e) {

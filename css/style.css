@@ -10667,3 +10667,7 @@ input:focus-visible {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
+
+.autocomplete-items  div{
+  white-space: pre;
+}
