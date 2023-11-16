@@ -10,11 +10,27 @@ async function beginFormProcessing() {
 
     if (currentLocationFromUrl) {
       [].forEach.call(currentLocationSpan, function (el) {
-        el.innerHTML = data.results[0].DPA.ADDRESS;
+        el.innerHTML = makeIntialsCapital(data.results[0].DPA.ADDRESS);
       });
     }
 
     const allData = {};
+
+    function makeIntialsCapital(str) {
+      const matches = str.match(/[A-Z]{1,2}[0-9][0-9A-Z]?\s?[0-9][A-Z]{2}$/g)
+      const postcode = matches ? matches[0] : "";
+
+      // remove postcode from string
+      str = str.replace(postcode, "");
+
+      return str
+        .trim()
+        .toLowerCase()
+        .split(" ")
+        .map(e => e[0].toUpperCase() + e.slice(1))
+        .join(" ")
+        .concat(" " + postcode);
+    }
 
     // updates the data object
     function updateAllData(data) {
