@@ -101,7 +101,7 @@ function initializeAutoComplete() {
 
   const input = document.getElementById('postcode-search');
   const searchBtn = document.getElementById('search-btn');
-  const findApiUrl = "https://api.os.uk/search/places/v1/find?key=K3zVR0BhE9ADVPAEjXJBBeTeIKL0PFyT&format=JSON&maxresults=10";
+  const findApiUrl = "https://api.os.uk/search/places/v1/find?key=K3zVR0BhE9ADVPAEjXJBBeTeIKL0PFyT&format=JSON&maxresults=100";
 
   if (input) {
     input.addEventListener('keyup', () => debounce(searchLocation(input), 500));
