@@ -6950,3 +6950,10 @@ background-color: #1665D8;
     margin-bottom: 5px;
 	}
 }
+
+.error-text {
+	margin: 5px 0px;
+	color: red;
+	font-size: 12px;
+	font-weight: normal;
+}

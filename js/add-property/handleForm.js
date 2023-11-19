@@ -55,41 +55,74 @@ async function beginFormProcessing() {
       return fields;
     }
 
-    // checks that the fields are present
-    function checkCompleteness(fields, neededFields) {
-      const fieldsAreComplete = Object.keys(neededFields).every(function (key) {
-        return fields.hasOwnProperty(key) && (fields[key] !== '' || fields[key].length > 0);
-      });
+    function showError(parentElement, message) {
+      const el = document.createElement('h5');
+      el.textContent = message;
+      el.classList.add('error-text');
 
-      return fieldsAreComplete;
+      if (parentElement.querySelector('.error-text') == null) {
+        parentElement.appendChild(el);
+
+        setTimeout(function () {
+          parentElement.removeChild(el);
+        }, 3000);
+      }
     }
 
-    // confirms the fields match a certain type
+    // checks that the fields are present
+    function checkCompleteness(fields, neededFields) {
+      const incompleteFields = Object.keys(neededFields).filter(function (key) {
+        return !fields.hasOwnProperty(key) || (fields[key] === '' && fields[key].length === 0);
+      });
+
+      if (incompleteFields.length > 0) {
+        // create a h5 with the error for each field
+        incompleteFields.forEach(field => {
+          const parent = document.querySelector(`[name="${field}"]`).parentElement;
+          const message = `${field.replace("-", " ")} is required`;
+          showError(parent, message);
+        })
+        return false;
+      }
+
+      return true;
+    }
+
     function checkValidity(fields, neededFields) {
-      const fieldsAreValid = Object.keys(neededFields).every(function (key) {
+      const invalidFields = Object.keys(neededFields).filter(function (key) {
         const value = fields[key];
         const type = neededFields[key];
 
-        if (type === 'string') {
-          return typeof value === 'string';
+        if (type === 'string' && typeof value !== 'string') {
+          return true;
         }
 
-        if (type === 'phone') {
-          return value.replace(/\s/g, "").match(/^\d{11}/) && value.replace(/\s/g, "").match(/^\d+$/);
+        if (type === 'phone' && (!value.replace(/\s/g, "").match(/^\d{11}/) || !value.replace(/\s/g, "").match(/^\d+$/))) {
+          return true;
         }
 
-        if (type === 'email') {
-          return value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+        if (type === 'email' && !value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+          return true;
         }
 
-        if (type === 'array') {
-          return Array.isArray(value);
+        if (type === 'array' && !Array.isArray(value)) {
+          return true;
         }
 
         return false;
       });
 
-      return fieldsAreValid;
+      if (invalidFields.length > 0) {
+        // create a h5 with the error for each field
+        invalidFields.forEach(field => {
+          const parent = document.querySelector(`[name="${field}"]`).parentElement;
+          const message = `${field.replace("-", " ")} is invalid`;
+          showError(parent, message);
+        })
+        return false;
+      }
+
+      return true;
     }
 
     function getValueOfMultipleSelect(select) {
@@ -122,9 +155,7 @@ async function beginFormProcessing() {
       const fieldsAreComplete = checkCompleteness(fields, neededFields);
       const fieldsAreValid = checkValidity(fields, neededFields);
 
-      if (!(fieldsAreComplete && fieldsAreValid)) {
-        alert('Please fill out all fields correctly');
-
+      if (fieldsAreComplete == false || fieldsAreValid == false) {
         return;
       }
 
@@ -145,33 +176,19 @@ async function beginFormProcessing() {
           }
         });
 
-        // update the property-type input
+        // Update the property-type input
         const val = this.dataset.val;
-        document.querySelector('[name="property-type"]').value = val;
+        const propertyTypeInput = document.querySelector('[name="property-type"]');
+        propertyTypeInput.value = val;
 
-        switch (val) {
-          case 'house':
-            [].forEach.call(document.querySelectorAll('[id^="second-"]'), (el) => el.classList.add('hide'));
-            document.getElementById('second-' + val).classList.remove('hide');
-            break;
-          case 'apartment':
-            [].forEach.call(document.querySelectorAll('[id^="second-"]'), (el) => el.classList.add('hide'));
-            document.getElementById('second-' + val).classList.remove('hide');
-            break;
-          case 'land':
-            [].forEach.call(document.querySelectorAll('[id^="second-"]'), (el) => el.classList.add('hide'));
-            document.getElementById('second-' + val).classList.remove('hide');
-            break;
-          case 'commercial':
-            [].forEach.call(document.querySelectorAll('[id^="second-"]'), (el) => el.classList.add('hide'));
-            document.getElementById('second-' + val).classList.remove('hide');
-            break;
-          case 'other':
-            [].forEach.call(document.querySelectorAll('[id^="second-"]'), (el) => el.classList.add('hide'));
-            document.getElementById('second-' + val).classList.remove('hide');
-            break;
-          default:
-            break;
+        // Hide all elements with id starting with 'second-'
+        const allSecondElements = document.querySelectorAll('[id^="second-"]');
+        [].forEach.call(allSecondElements, (el) => el.classList.add('hide'));
+
+        // Remove the 'hide' class from the selected element based on val
+        const selectedElement = document.getElementById('second-' + val);
+        if (selectedElement) {
+          selectedElement.classList.remove('hide');
         }
       }))
 
@@ -251,9 +268,7 @@ async function beginFormProcessing() {
       const fieldsAreComplete = checkCompleteness(completeFields, neededFields);
       const fieldsAreValid = checkValidity(completeFields, neededFields);
 
-      if (!(fieldsAreComplete && fieldsAreValid)) {
-        alert('Please fill out all fields correctly');
-
+      if (fieldsAreComplete == false || fieldsAreValid == false) {
         return;
       }
 
@@ -345,9 +360,7 @@ async function beginFormProcessing() {
       const fieldsAreComplete = checkCompleteness(fields, neededFields);
       const fieldsAreValid = checkValidity(fields, neededFields);
 
-      if (!(fieldsAreComplete && fieldsAreValid)) {
-        alert('Please fill out all fields correctly');
-
+      if (fieldsAreComplete == false || fieldsAreValid == false) {
         return;
       }
 
@@ -393,9 +406,7 @@ async function beginFormProcessing() {
       const fieldsAreComplete = checkCompleteness(fields, neededFields);
       const fieldsAreValid = checkValidity(fields, neededFields);
 
-      if (!(fieldsAreComplete && fieldsAreValid)) {
-        alert('Please fill out all fields correctly');
-
+      if (fieldsAreComplete == false || fieldsAreValid == false) {
         return;
       }
 
@@ -434,9 +445,7 @@ async function beginFormProcessing() {
       const fieldsAreComplete = checkCompleteness(fields, neededFields);
       const fieldsAreValid = checkValidity(fields, neededFields);
 
-      if (!(fieldsAreComplete && fieldsAreValid)) {
-        alert('Please fill out all fields correctly');
-
+      if (fieldsAreComplete == false || fieldsAreValid == false) {
         return;
       }
 
