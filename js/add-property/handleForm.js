@@ -1,6 +1,6 @@
 async function beginFormProcessing() {
   try {
-    const retrieveApiUrl = "https://api.os.uk/search/places/v1/uprn?key=K3zVR0BhE9ADVPAEjXJBBeTeIKL0PFyT&format=JSON"
+    const retrieveApiUrl = "https://api.os.uk/search/places/v1/uprn?key=uY7Jn1XGF95U6w9FzySvGlgI4RmYr38l&format=JSON"
 
     const currentLocationSpan = document.getElementsByClassName('currentLocation');
     const currentLocationFromUrl = decodeURI(window.location.search.replace('?id=', ''));
