@@ -29,14 +29,14 @@ async function beginFormProcessing() {
     const currentLocationSpan = document.getElementsByClassName('currentLocation');
     const currentLocationFromUrl = decodeURI(window.location.search.replace('?id=', ''));
 
-    // const resp = await fetch(`${retrieveApiUrl}&uprn=${currentLocationFromUrl}`);
-    // const data = await resp.json();
+    const resp = await fetch(`${retrieveApiUrl}&uprn=${currentLocationFromUrl}`);
+    const data = await resp.json();
 
-    // if (currentLocationFromUrl) {
-    //   [].forEach.call(currentLocationSpan, function (el) {
-    //     el.innerHTML = makeIntialsCapital(data.results[0].DPA.ADDRESS);
-    //   });
-    // }
+    if (currentLocationFromUrl) {
+      [].forEach.call(currentLocationSpan, function (el) {
+        el.innerHTML = makeIntialsCapital(data.results[0].DPA.ADDRESS);
+      });
+    }
 
     const allData = {};
 
