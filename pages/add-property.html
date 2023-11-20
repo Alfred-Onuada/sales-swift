@@ -23,9 +23,13 @@
     <link rel="stylesheet" href="./../css/add-property/bootstrap.min.css">
     <link rel="stylesheet" href="./../css/add-property/font-awesome-all.min.css">
     <link rel="stylesheet" href="./../css/add-property/jquery.classycountdown.min.css">
-    <!-- <link rel="stylesheet" href="./../css/add-property/nice-select.min.css"> -->
+    <link rel="stylesheet" href="./../css/add-property/nice-select.min.css">
     <link rel="stylesheet" href="./../css/add-property/reset.css">
     <link rel="stylesheet" href="./../css/add-property/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 
     <script src="https://kit.fontawesome.com/dc8ee980c4.js" crossorigin="anonymous"></script>
 
@@ -274,168 +278,177 @@
                                                                         </div>
                                                                     </div>
                                                                     <div id="second-house">
-                                                                        <br>
-                                                                        <label>Further describe your property
-                                                                            type?<span>*</span></label>
-                                                                        <select name="house-type">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="Detached">Detached
-                                                                            </option>
-                                                                            <option value="Semi">Semi</option>
-                                                                            <option value="Terraced">Terraced
-                                                                            </option>
-                                                                            <option value="End Terraced">End
-                                                                                Terraced</option>
-                                                                            <option value="Bungalow Detached">
-                                                                                Bungalow Detached</option>
-                                                                            <option value="Bungalow Semi">Bungalow
-                                                                                Semi</option>
-                                                                            <option value="Park Home">Park Home
-                                                                            </option>
-                                                                            <option value="Chalet">Chalet</option>
-                                                                            <option value="HMO">HMO</option>
-                                                                        </select>
-                                                                        <br>
-                                                                        <label>What is the property
-                                                                            tenure?<span>*</span></label>
-                                                                        <select name="house-tenure-type">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="Freehold">Freehold
-                                                                            </option>
-                                                                            <option value="Leasehold">Leasehold
-                                                                            </option>
-                                                                        </select>
-                                                                        <br>
-                                                                        <label>What type of build is the
-                                                                            property?<span>*</span></label>
-                                                                        <select name="house-build-type">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="Ex Local">Ex Local
-                                                                            </option>
-                                                                            <option value="Privately Built">
-                                                                                Privately Built</option>
-                                                                            <option value="Newly Built">Newly Built
-                                                                            </option>
-                                                                        </select>
-                                                                        <br>
-                                                                        <label>How many bedrooms does your property
-                                                                            have?<span>*</span></label>
-                                                                        <select name="house-bedrooms">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="Studio">Studio</option>
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                            <option value="4">4</option>
-                                                                            <option value="5">5</option>
-                                                                            <option value="6-10">6-10</option>
-                                                                            <option value="10+">10+</option>
-                                                                        </select>
+                                                                        <div class="select-section">
+                                                                            <label>Further describe your property
+                                                                                type?<span>*</span></label>
+                                                                            <select name="house-type">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Detached">Detached
+                                                                                </option>
+                                                                                <option value="Semi">Semi</option>
+                                                                                <option value="Terraced">Terraced
+                                                                                </option>
+                                                                                <option value="End Terraced">End
+                                                                                    Terraced</option>
+                                                                                <option value="Bungalow Detached">
+                                                                                    Bungalow Detached</option>
+                                                                                <option value="Bungalow Semi">Bungalow
+                                                                                    Semi</option>
+                                                                                <option value="Park Home">Park Home
+                                                                                </option>
+                                                                                <option value="Chalet">Chalet</option>
+                                                                                <option value="HMO">HMO</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="select-section">
+                                                                            <label>What is the property
+                                                                                tenure?<span>*</span></label>
+                                                                            <select name="house-tenure-type">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Freehold">Freehold
+                                                                                </option>
+                                                                                <option value="Leasehold">Leasehold
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="select-section">
+                                                                            <label>What type of build is the
+                                                                                property?<span>*</span></label>
+                                                                            <select name="house-build-type">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Ex Local">Ex Local
+                                                                                </option>
+                                                                                <option value="Privately Built">
+                                                                                    Privately Built</option>
+                                                                                <option value="Newly Built">Newly Built
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="select-section">
+                                                                            <label>How many bedrooms does your property
+                                                                                have?<span>*</span></label>
+                                                                            <select name="house-bedrooms">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Studio">Studio</option>
+                                                                                <option value="1">1</option>
+                                                                                <option value="2">2</option>
+                                                                                <option value="3">3</option>
+                                                                                <option value="4">4</option>
+                                                                                <option value="5">5</option>
+                                                                                <option value="6-10">6-10</option>
+                                                                                <option value="10+">10+</option>
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
                                                                     <div id="second-apartment" class="hide">
-                                                                        <br>
-                                                                        <label>Further describe your property
-                                                                            type?<span>*</span></label>
-                                                                        <select name="apartment-type">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="Purpose Built">Purpose
-                                                                                Built</option>
-                                                                            <option value="Maisonette">Maisonette
-                                                                            </option>
-                                                                            <option value="Conversion">Conversion
-                                                                            </option>
-                                                                            <option value="Penthouse">Penthouse
-                                                                            </option>
-                                                                            <option value="Basement">Basement
-                                                                            </option>
-                                                                            <option value="Retirement">Retirement
-                                                                            </option>
-                                                                            <option value="Flats">Flats</option>
-                                                                            <option value="Student Flats">Student
-                                                                                Flats</option>
-                                                                            <option value="High Rise Block">High
-                                                                                Rise Block</option>
-                                                                            <option value="Duplex">Duplex</option>
-                                                                        </select>
-                                                                        <br>
-                                                                        <label>What is the property
-                                                                            tenure?<span>*</span></label>
-                                                                        <select name="apartment-tenure-type">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="Freehold">Freehold
-                                                                            </option>
-                                                                            <option value="Leasehold">Leasehold
-                                                                            </option>
-                                                                        </select>
-                                                                        <br>
-                                                                        <label>What type of build is the
-                                                                            property?<span>*</span></label>
-                                                                        <select name="apartment-build-type">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="Ex Local">Ex Local
-                                                                            </option>
-                                                                            <option value="Privately Built">
-                                                                                Privately Built</option>
-                                                                            <option value="Newly Built">Newly Built
-                                                                            </option>
-                                                                        </select>
-                                                                        <br>
-                                                                        <label>What floor is the property
-                                                                            on?<span>*</span></label>
-                                                                        <input type="text" name="apartment-floor"
-                                                                            placeholder="1st, 2nd, 3rd, 98th">
-                                                                        <br>
-                                                                        <label>How many floors in total are in the
-                                                                            property block?<span>*</span></label>
-                                                                        <input type="text" name="apartment-total-floor"
-                                                                            placeholder="1st, 2nd, 3rd, 98th">
-                                                                        <br>
-                                                                        <label>How many bedrooms does your property
-                                                                            have?<span>*</span></label>
-                                                                        <select name="apartment-bedrooms">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="Studio">Studio</option>
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                            <option value="4">4</option>
-                                                                            <option value="5">5</option>
-                                                                            <option value="6-10">6-10</option>
-                                                                            <option value="10+">10+</option>
-                                                                        </select>
+                                                                        <div class="select-section">
+                                                                            <label>Further describe your property
+                                                                                type?<span>*</span></label>
+                                                                            <select name="apartment-type">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Purpose Built">Purpose
+                                                                                    Built</option>
+                                                                                <option value="Maisonette">Maisonette
+                                                                                </option>
+                                                                                <option value="Conversion">Conversion
+                                                                                </option>
+                                                                                <option value="Penthouse">Penthouse
+                                                                                </option>
+                                                                                <option value="Basement">Basement
+                                                                                </option>
+                                                                                <option value="Retirement">Retirement
+                                                                                </option>
+                                                                                <option value="Flats">Flats</option>
+                                                                                <option value="Student Flats">Student
+                                                                                    Flats</option>
+                                                                                <option value="High Rise Block">High
+                                                                                    Rise Block</option>
+                                                                                <option value="Duplex">Duplex</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="select-section">
+                                                                            <label>What is the property
+                                                                                tenure?<span>*</span></label>
+                                                                            <select name="apartment-tenure-type">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Freehold">Freehold
+                                                                                </option>
+                                                                                <option value="Leasehold">Leasehold
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="select-section">
+                                                                            <label>What type of build is the
+                                                                                property?<span>*</span></label>
+                                                                            <select name="apartment-build-type">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Ex Local">Ex Local
+                                                                                </option>
+                                                                                <option value="Privately Built">
+                                                                                    Privately Built</option>
+                                                                                <option value="Newly Built">Newly Built
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="select-section">
+                                                                            <label>What floor is the property
+                                                                                on?<span>*</span></label>
+                                                                            <input type="text" name="apartment-floor"
+                                                                                placeholder="1st, 2nd, 3rd, 98th">
+                                                                        </div>
+                                                                        <div class="select-section">
+                                                                            <label>How many floors in total are in the
+                                                                                property block?<span>*</span></label>
+                                                                            <input type="text" name="apartment-total-floor"
+                                                                                placeholder="1st, 2nd, 3rd, 98th">
+                                                                        </div>
+                                                                        <div class="select-section">
+                                                                            <label>How many bedrooms does your property
+                                                                                have?<span>*</span></label>
+                                                                            <select name="apartment-bedrooms">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="Studio">Studio</option>
+                                                                                <option value="1">1</option>
+                                                                                <option value="2">2</option>
+                                                                                <option value="3">3</option>
+                                                                                <option value="4">4</option>
+                                                                                <option value="5">5</option>
+                                                                                <option value="6-10">6-10</option>
+                                                                                <option value="10+">10+</option>
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
                                                                     <div id="second-land" class="hide">
-                                                                        <br>
-                                                                        <label>Further describe your property
-                                                                            type?<span>*</span></label>
-                                                                        <select name="land-type" id="land-opt-toggle">
-                                                                            <option data-display="Select" value="">
-                                                                                Please
-                                                                                select one</option>
-                                                                            <option value="With Planning">With
-                                                                                Planning</option>
-                                                                            <option value="Without Planning">Without
-                                                                                Planning</option>
-                                                                        </select>
-
-                                                                        <div class="hide" id="with-p">
-                                                                            <br>
+                                                                        <div class="select-section">
+                                                                            <label>Further describe your property
+                                                                                type?<span>*</span></label>
+                                                                            <select name="land-type" id="land-opt-toggle">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please
+                                                                                    select one</option>
+                                                                                <option value="With Planning">With
+                                                                                    Planning</option>
+                                                                                <option value="Without Planning">Without
+                                                                                    Planning</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="hide select-section" id="with-p">
                                                                             <label>Select
                                                                                 Purpose<span>*</span></label>
                                                                             <select
@@ -457,8 +470,7 @@
                                                                                     Wilderness Area</option>
                                                                             </select>
                                                                         </div>
-                                                                        <div class="hide" id="without-p">
-                                                                            <br>
+                                                                        <div class="hide select-section" id="without-p">
                                                                             <label>Select
                                                                                 Purpose<span>*</span></label>
                                                                             <select name="land-purpose-with-planning">
@@ -507,85 +519,87 @@
                                                                         </div>
                                                                     </div>
                                                                     <div id="second-commercial" class="hide">
-                                                                        <br>
-                                                                        <label>Further describe your property
-                                                                            type<span>*</span></label>
-                                                                        <select name="commercial-type">
-                                                                            <option data-display="Select" value="">
-                                                                                Please select
-                                                                                one</option>
-                                                                            <option value="Office Building">Office
-                                                                                Building</option>
-                                                                            <option value="Retail Space">Retail Space
-                                                                            </option>
-                                                                            <option value="Industrial Warehouse">
-                                                                                Industrial Warehouse</option>
-                                                                            <option value="Shopping Center">Shopping
-                                                                                Center</option>
-                                                                            <option value="Mixed-Use Property">Mixed-Use
-                                                                                Property</option>
-                                                                            <option value="Restaurant Space">Restaurant
-                                                                                Space</option>
-                                                                            <option value="Medical Office Building">
-                                                                                Medical Office Building</option>
-                                                                            <option value="Hotel or Motel">Hotel or
-                                                                                Motel</option>
-                                                                            <option value="Apartment Complex">Apartment
-                                                                                Complex</option>
-                                                                            <option value="Self-Storage Facility">
-                                                                                Self-Storage Facility</option>
-                                                                            <option value="Office Park">Office Park
-                                                                            </option>
-                                                                            <option value="Strip Mall">Strip Mall
-                                                                            </option>
-                                                                            <option value="Business Park">Business Park
-                                                                            </option>
-                                                                            <option value="Manufacturing Facility">
-                                                                                Manufacturing Facility</option>
-                                                                            <option value="Gas Station">Gas Station
-                                                                            </option>
-                                                                            <option value="Shopping Mall">Shopping Mall
-                                                                            </option>
-                                                                            <option value="Flex Space">Flex Space
-                                                                            </option>
-                                                                            <option value="Data Center">Data Center
-                                                                            </option>
-                                                                            <option value="Special Purpose Property">
-                                                                                Special Purpose Property</option>
-                                                                            <option
-                                                                                value="Agricultural Land (for commercial farming)">
-                                                                                Agricultural Land (for commercial
-                                                                                farming)</option>
-                                                                        </select>
+                                                                        <div class="select-section">
+                                                                            <label>Further describe your property
+                                                                                type<span>*</span></label>
+                                                                            <select name="commercial-type">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please select
+                                                                                    one</option>
+                                                                                <option value="Office Building">Office
+                                                                                    Building</option>
+                                                                                <option value="Retail Space">Retail Space
+                                                                                </option>
+                                                                                <option value="Industrial Warehouse">
+                                                                                    Industrial Warehouse</option>
+                                                                                <option value="Shopping Center">Shopping
+                                                                                    Center</option>
+                                                                                <option value="Mixed-Use Property">Mixed-Use
+                                                                                    Property</option>
+                                                                                <option value="Restaurant Space">Restaurant
+                                                                                    Space</option>
+                                                                                <option value="Medical Office Building">
+                                                                                    Medical Office Building</option>
+                                                                                <option value="Hotel or Motel">Hotel or
+                                                                                    Motel</option>
+                                                                                <option value="Apartment Complex">Apartment
+                                                                                    Complex</option>
+                                                                                <option value="Self-Storage Facility">
+                                                                                    Self-Storage Facility</option>
+                                                                                <option value="Office Park">Office Park
+                                                                                </option>
+                                                                                <option value="Strip Mall">Strip Mall
+                                                                                </option>
+                                                                                <option value="Business Park">Business Park
+                                                                                </option>
+                                                                                <option value="Manufacturing Facility">
+                                                                                    Manufacturing Facility</option>
+                                                                                <option value="Gas Station">Gas Station
+                                                                                </option>
+                                                                                <option value="Shopping Mall">Shopping Mall
+                                                                                </option>
+                                                                                <option value="Flex Space">Flex Space
+                                                                                </option>
+                                                                                <option value="Data Center">Data Center
+                                                                                </option>
+                                                                                <option value="Special Purpose Property">
+                                                                                    Special Purpose Property</option>
+                                                                                <option
+                                                                                    value="Agricultural Land (for commercial farming)">
+                                                                                    Agricultural Land (for commercial
+                                                                                    farming)</option>
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
                                                                     <div id="second-other" class="hide">
-                                                                        <br>
-                                                                        <label>Further describe your property
-                                                                            type<span>*</span></label>
-                                                                        <select name="other-select">
-                                                                            <option data-display="Select" value="">
-                                                                                Please select
-                                                                                one</option>
-                                                                            <option value="Mobile Homes">Mobile Homes
-                                                                            </option>
-                                                                            <option value="Cabins">Cabins</option>
-                                                                            <option value="Vacation Rentals">Vacation
-                                                                                Rentals</option>
-                                                                            <option value="Timeshares">Timeshares
-                                                                            </option>
-                                                                            <option value="Cooperative Housing">
-                                                                                Cooperative Housing</option>
-                                                                            <option value="Houseboats">Houseboats
-                                                                            </option>
-                                                                            <option value="Studios and Workshops">
-                                                                                Studios and Workshops</option>
-                                                                            <option value="Barns">Barns</option>
-                                                                            <option value="Lofts">Lofts</option>
-                                                                            <option value="Treehouses">Treehouses
-                                                                            </option>
-                                                                            <option value="Geodesic and Dome Homes">
-                                                                                Geodesic and Dome Homes</option>
-                                                                        </select>
+                                                                        <div class="select-section">
+                                                                            <label>Further describe your property
+                                                                                type<span>*</span></label>
+                                                                            <select name="other-select">
+                                                                                <option data-display="Select" value="">
+                                                                                    Please select
+                                                                                    one</option>
+                                                                                <option value="Mobile Homes">Mobile Homes
+                                                                                </option>
+                                                                                <option value="Cabins">Cabins</option>
+                                                                                <option value="Vacation Rentals">Vacation
+                                                                                    Rentals</option>
+                                                                                <option value="Timeshares">Timeshares
+                                                                                </option>
+                                                                                <option value="Cooperative Housing">
+                                                                                    Cooperative Housing</option>
+                                                                                <option value="Houseboats">Houseboats
+                                                                                </option>
+                                                                                <option value="Studios and Workshops">
+                                                                                    Studios and Workshops</option>
+                                                                                <option value="Barns">Barns</option>
+                                                                                <option value="Lofts">Lofts</option>
+                                                                                <option value="Treehouses">Treehouses
+                                                                                </option>
+                                                                                <option value="Geodesic and Dome Homes">
+                                                                                    Geodesic and Dome Homes</option>
+                                                                            </select>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -638,7 +652,7 @@
                                                                     <div class="row">
 
                                                                         <div class="">
-                                                                            <div class="">
+                                                                            <div class="select-section">
                                                                                 <label>What is the Condition of the
                                                                                     Property?<span>*</span></label>
                                                                                 <select name="property-condition">
@@ -665,7 +679,7 @@
                                                                                     </option>
                                                                                 </select>
                                                                             </div>
-                                                                            <div class="">
+                                                                            <div class="select-section">
                                                                                 <label>What is the Reason for the
                                                                                     Sale?<span>*</span></label>
                                                                                 <select name="sale-reason" id="sale-reason">
@@ -727,7 +741,7 @@
                                                                                     placeholder="Need some cash"
                                                                                     >
                                                                             </div>
-                                                                            <div class="">
+                                                                            <div class="select-section">
                                                                                 <label>What speed of sale is
                                                                                     needed?<span>*</span></label>
                                                                                 <select name="speed-of-sale">
@@ -756,7 +770,7 @@
                                                                                         rush</option>
                                                                                 </select>
                                                                             </div>
-                                                                            <div id="landlord-or-homeowner">
+                                                                            <div id="landlord-or-homeowner" class="select-section">
                                                                                 <label>Are you a Landlord or
                                                                                     Homeowner?<span>*</span></label>
                                                                                 <select name="landlord-or-homeowner">
@@ -764,15 +778,12 @@
                                                                                         value="">Please
                                                                                         select one
                                                                                     </option>
-                                                                                    <option value="Landlord">Landlord
-                                                                                    </option>
-                                                                                    <option value="Homeowner">
-                                                                                        Homeowner</option>
-                                                                                    <option value="Homeowner_And_Landlord">
-                                                                                        Homeowner & Landlord</option>
+                                                                                    <option value="Landlord">Landlord</option>
+                                                                                    <option value="Homeowner">Homeowner</option>
+                                                                                    <option value="Homeowner And Landlord">Homeowner And Landlord</option>
                                                                                 </select>
                                                                             </div>
-                                                                            <div id="ownership-type" class="hide">
+                                                                            <div id="ownership-type" class="hide select-section">
                                                                                 <label>What kind of
                                                                                     ownership?<span>*</span></label>
                                                                                 <select name="ownership-type">
@@ -790,7 +801,7 @@
                                                                                         Jointly Owned</option>
                                                                                 </select>
                                                                             </div>
-                                                                            <div>
+                                                                            <div class="select-section">
                                                                                 <label>Is this the only property you
                                                                                     have to sell?<span>*</span></label>
                                                                                 <select name="properties-for-sale-question"
@@ -811,7 +822,7 @@
                                                                                     name="properties-for-sale-answer"
                                                                                     >
                                                                             </div>
-                                                                            <div class="">
+                                                                            <div class="select-section">
                                                                                 <label>Is this property already on the
                                                                                     market?<span>*</span></label>
                                                                                 <!-- Yes, No, Strongly considering it, I want 100% off market confidential sale! -->
@@ -832,7 +843,7 @@
                                                                                         sale!</option>
                                                                                 </select>
                                                                             </div>
-                                                                            <div id="on-market-answer" class="hide">
+                                                                            <div id="on-market-answer" class="hide select-section">
                                                                                 <!-- How long has it been on the market for  -->
                                                                                 <label>How long has it been on the
                                                                                     market for?<span>*</span></label>
@@ -920,7 +931,7 @@
                                                                             <input type="number" placeholder="£500000" name="property-worth"
                                                                                 >
                                                                         </div>
-                                                                        <div class="">
+                                                                        <div class="select-section">
                                                                             <label>Are their any additional debts on the
                                                                                 property?<span>*</span></label>
                                                                             <select name="additional-debts" id="additional-debts">
@@ -937,37 +948,16 @@
                                                                             <input type="number" placeholder="£500" name="additional-debts-answer"
                                                                                 >
                                                                         </div>
-                                                                        <div class="">
-                                                                            <label>Select the best day to call you?<span>*</span></label>
-                                                                            <select name="day-to-call-back" multiple>
-                                                                                <option data-display="Select" value="">
-                                                                                    Please
-                                                                                    select one</option>
-                                                                                <option value="Mondays">Mondays</option>
-                                                                                <option value="Tuesdays">Tuesdays</option>
-                                                                                <option value="Wednesdays">Wednesdays</option>
-                                                                                <option value="Thursday">Thursday</option>
-                                                                                <option value="Fridays">Fridays</option>
-                                                                                <option value="Saturdays">Saturdays</option>
-                                                                                <option value="Sunday">Sunday</option>
-                                                                            </select>
+                                                                        <div class="select-section">
+                                                                            <label>Type in the best day(s) to call you?<span>*</span></label><br>
+                                                                            <input name="day-to-call-back" placeholder="Mondays, Saturdays" class="tagify" data-whitelist="Mondays,Tuesdays,Wednesdays,Thursday,Fridays,Saturdays,Sunday">
                                                                         </div>
-                                                                        <div class="">
-                                                                            <label>Select time to call
-                                                                                you?<span>*</span></label>
-                                                                            <select name="time-to-call-back" multiple>
-                                                                                <option data-display="Select" value="">
-                                                                                    Please
-                                                                                    select one</option>
-                                                                                <option value="12am-4am">12am-4am</option>
-                                                                                <option value="4am-8am">4am-8am</option>
-                                                                                <option value="8am-12pm">8am-12pm</option>
-                                                                                <option value="12pm-4pm">12pm-4pm</option>
-                                                                                <option value="4pm-8pm">4pm-8pm</option>
-                                                                                <option value="8pm-12am">8pm-12am</option>
-                                                                            </select>
+                                                                        
+                                                                        <div class="select-section">
+                                                                            <label>Type in the best time(s) to call you?<span>*</span></label><br>
+                                                                            <input name="time-to-call-back" placeholder="12am-4am, 4am-8am" class="tagify" data-whitelist="12am-4am,4am-8am,8am-12pm,12pm-4pm,4pm-8pm,8pm-12am">
                                                                         </div>
-                                                                        <div class="">
+                                                                        <div class="select-section">
                                                                             <label>How did you hear about Sale
                                                                                 Swift?<span>*</span></label>
                                                                             <select name="hear-about-us">
@@ -1256,12 +1246,11 @@
                 </div>
             </div>
         </section>
-
-
+        
+        
     </div>
-
+    
     <!-- Formify Scripts -->
-    <script src="./../js/add-property/handleForm.js"></script>
     <script src="./../js/add-property/jquery.min.js"></script>
     <script src="./../js/add-property/jquery-migrate.js"></script>
     <script src="./../js/add-property/popper.min.js"></script>
@@ -1270,6 +1259,7 @@
     <script src="./../js/add-property/nice-select.min.js"></script>
     <script src="./../js/add-property/main.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="./../js/add-property/handleForm.js"></script>
 
     <script>
         $(document).ready(function () {

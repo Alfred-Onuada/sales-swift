@@ -1,3 +1,27 @@
+function listenForChanges(element, attribute, callbackFunc) {
+  // Create a MutationObserver instance
+  var observer = new MutationObserver(function(mutationsList, observer) {
+    for (var mutation of mutationsList) {
+      if (mutation.type === 'childList' && mutation.target === element) {
+        // Child list has changed (innerHTML change)
+        var newValue = element.innerHTML;
+
+        // Call the callback function with the new value
+        callbackFunc(newValue);
+      }
+    }
+  });
+
+  // Configure the observer to watch for child list changes
+  var config = { childList: true };
+
+  // Start observing the target element
+  observer.observe(element, config);
+
+  // Return the observer so it can be disconnected later if needed
+  return observer;
+}
+
 async function beginFormProcessing() {
   try {
     const retrieveApiUrl = "https://api.os.uk/search/places/v1/uprn?key=uY7Jn1XGF95U6w9FzySvGlgI4RmYr38l&format=JSON"
@@ -5,14 +29,14 @@ async function beginFormProcessing() {
     const currentLocationSpan = document.getElementsByClassName('currentLocation');
     const currentLocationFromUrl = decodeURI(window.location.search.replace('?id=', ''));
 
-    const resp = await fetch(`${retrieveApiUrl}&uprn=${currentLocationFromUrl}`);
-    const data = await resp.json();
+    // const resp = await fetch(`${retrieveApiUrl}&uprn=${currentLocationFromUrl}`);
+    // const data = await resp.json();
 
-    if (currentLocationFromUrl) {
-      [].forEach.call(currentLocationSpan, function (el) {
-        el.innerHTML = makeIntialsCapital(data.results[0].DPA.ADDRESS);
-      });
-    }
+    // if (currentLocationFromUrl) {
+    //   [].forEach.call(currentLocationSpan, function (el) {
+    //     el.innerHTML = makeIntialsCapital(data.results[0].DPA.ADDRESS);
+    //   });
+    // }
 
     const allData = {};
 
@@ -79,7 +103,7 @@ async function beginFormProcessing() {
         // create a h5 with the error for each field
         incompleteFields.forEach(field => {
           const parent = document.querySelector(`[name="${field}"]`).parentElement;
-          const message = `${field.replace("-", " ")} is required`;
+          const message = `${field.replace(/\-/g, " ")} is required`;
           showError(parent, message);
         })
         return false;
@@ -105,7 +129,7 @@ async function beginFormProcessing() {
           return true;
         }
 
-        if (type === 'array' && !Array.isArray(value)) {
+        if (type === 'array' && (!Array.isArray(value) || value.length === 0)) {
           return true;
         }
 
@@ -116,7 +140,7 @@ async function beginFormProcessing() {
         // create a h5 with the error for each field
         invalidFields.forEach(field => {
           const parent = document.querySelector(`[name="${field}"]`).parentElement;
-          const message = `${field.replace("-", " ")} is invalid`;
+          const message = `${field.replace(/\-/g, " ")} is invalid`;
           showError(parent, message);
         })
         return false;
@@ -126,16 +150,7 @@ async function beginFormProcessing() {
     }
 
     function getValueOfMultipleSelect(select) {
-      const options = select.options;
-      const selected = [];
-
-      for (let i = 0; i < options.length; i++) {
-        if (options[i].selected && options[i].value !== '') {
-          selected.push(options[i].value);
-        }
-      }
-
-      return selected;
+      return JSON.parse(select.value || "[]").map(obj => obj.value);
     } 
 
     const firstStepBtn = document.getElementById('first-step');
@@ -192,8 +207,10 @@ async function beginFormProcessing() {
         }
       }))
 
-      document.getElementById('land-opt-toggle').addEventListener('change', function (e) {
-        if (e.target.value == "With Planning") {
+      const landToggleFromNiceSelect = document.getElementById('land-opt-toggle').parentElement.querySelector('.current');
+
+      listenForChanges(landToggleFromNiceSelect, 'innerHTML', function (newValue) {
+        if (newValue == 'With Planning') {
           document.getElementById('with-p').classList.remove('hide');
           document.getElementById('without-p').classList.add('hide');
         } else {
@@ -252,7 +269,7 @@ async function beginFormProcessing() {
 
       // check the land constraints
       if (fields['property-type'] === 'land') {
-        const landOpt = document.getElementById('land-opt-toggle').value;
+        const landOpt = document.getElementById('land-opt-toggle').parentElement.querySelector('.current').textContent;
 
         if (landOpt === 'With Planning') {
           delete secondStage['land']['land-purpose-with-planning'];
@@ -278,40 +295,49 @@ async function beginFormProcessing() {
 
     // Begin third step controls
     function thirdStepControls() {
-      document.getElementById('sale-reason').addEventListener('change', function (e) {
-        if (e.target.value == 'other') {
+      const saleReasonElemFromNiceSelect = document.getElementById('sale-reason').parentElement.querySelector('.current');
+
+      listenForChanges(saleReasonElemFromNiceSelect, 'innerHTML', function (newValue) {
+        if (newValue == 'other') {
           document.getElementById('sale-reason-other').classList.remove('hide');
         } else {
           document.getElementById('sale-reason-other').classList.add('hide');
         }
-      })
+      });
 
-      document.getElementById('landlord-or-homeowner').addEventListener('change', function (e) {
-        if (e.target.value == 'Landlord') {
+      const landlordOrHomeownerElemFromNiceSelect = document.getElementById('landlord-or-homeowner').querySelector('.current');
+
+      listenForChanges(landlordOrHomeownerElemFromNiceSelect, 'innerHTML', function (newValue) {
+        if (newValue == 'Landlord') {
           document.getElementById('ownership-type').classList.add('hide');
           document.getElementById('landlord-last').classList.remove('hide');
           document.getElementById('non-landlord-last').classList.add('hide');
-        } else if (e.target.value == 'Homeowner') {
+        } else if (newValue == 'Homeowner') {
           document.getElementById('ownership-type').classList.remove('hide');
           document.getElementById('landlord-last').classList.add('hide');
           document.getElementById('non-landlord-last').classList.remove('hide');
-        } else if (e.target.value == 'Homeowner_And_Landlord') {
+        } else if (newValue == 'Homeowner And Landlord') {
           document.getElementById('ownership-type').classList.remove('hide');
           document.getElementById('landlord-last').classList.remove('hide');
           document.getElementById('non-landlord-last').classList.remove('hide');
         }
-      })
+      });
 
-      document.getElementById('properties-for-sale-question').addEventListener('change', function (e) {
-        if (e.target.value == 'No') {
+      const propertiesForSaleElemFromNiceSelect = document.getElementById('properties-for-sale-question').parentElement.querySelector('.current');
+
+      listenForChanges(propertiesForSaleElemFromNiceSelect, 'innerHTML', function (newValue) {
+        if (newValue == 'No') {
           document.getElementById('properties-for-sale-answer').classList.remove('hide');
         } else {
           document.getElementById('properties-for-sale-answer').classList.add('hide');
         }
       });
 
-      document.getElementById('on-market-question').addEventListener('change', function (e) {
-        if (e.target.value == 'Yes') {
+
+      const onMarketElemFromNiceSelect = document.getElementById('on-market-question').parentElement.querySelector('.current');
+
+      listenForChanges(onMarketElemFromNiceSelect, 'innerHTML', function (newValue) {
+        if (newValue == 'Yes') {
           document.getElementById('on-market-answer').classList.remove('hide');
         } else {
           document.getElementById('on-market-answer').classList.add('hide');
@@ -340,19 +366,19 @@ async function beginFormProcessing() {
         delete allData[key];
       });
 
-      if (document.getElementById('sale-reason').value !== 'other') {
+      if (document.getElementById('sale-reason').parentElement.querySelector('.current').textContent !== 'other') {
         delete neededFields['sale-reason-other'];
       }
 
-      if (document.getElementById('landlord-or-homeowner').value !== 'Homeowner') {
+      if (document.getElementById('landlord-or-homeowner').parentElement.querySelector('.current').textContent !== 'Homeowner') {
         delete neededFields['ownership-type'];
       }
 
-      if (document.getElementById('properties-for-sale-question').value !== 'No') {
+      if (document.getElementById('properties-for-sale-question').parentElement.querySelector('.current').textContent !== 'No') {
         delete neededFields['properties-for-sale-answer'];
       }
 
-      if (document.getElementById('on-market-question').value !== 'Yes') {
+      if (document.getElementById('on-market-question').parentElement.querySelector('.current').textContent !== 'Yes') {
         delete neededFields['on-market-answer'];
       }
 
@@ -370,8 +396,10 @@ async function beginFormProcessing() {
 
     // Begin fourth step controls
     function fourthStepControls () {
-      document.getElementById('additional-debts').addEventListener('change', function (e) {
-        if (e.target.value == 'Yes') {
+      const debtElemFromNiceSelect = document.getElementById('additional-debts').parentElement.querySelector('.current');
+
+      listenForChanges(debtElemFromNiceSelect, 'innerHTML', function (newValue) {
+        if (newValue == 'Yes') {
           document.getElementById('additional-debts-answer').classList.remove('hide');
         } else {
           document.getElementById('additional-debts-answer').classList.add('hide');
@@ -459,11 +487,24 @@ async function beginFormProcessing() {
       console.log(allData);
     });
   } catch (error) {
+    console.log(error);
     alert('Something went wrong, please try reload the page and try again');
   }
 }
 
-document.addEventListener('DOMContentLoaded', beginFormProcessing);
+document.addEventListener('DOMContentLoaded', () => {
+  beginFormProcessing();
+
+  const inputElements = document.querySelectorAll('.tagify');
+  
+  inputElements.forEach(function (inputElement) {
+      new Tagify(inputElement, {
+        enforceWhitelist: true,
+        whitelist: inputElement.value.trim().split(/\s*,\s*/)
+      });
+  });
+
+});
 
 /*
   TODO: submit the allData object to the server
