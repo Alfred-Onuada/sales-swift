@@ -1,10 +1,10 @@
 function listenForChanges(element, attribute, callbackFunc) {
   // Create a MutationObserver instance
-  var observer = new MutationObserver(function(mutationsList, observer) {
-    for (var mutation of mutationsList) {
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
       if (mutation.type === 'childList' && mutation.target === element) {
         // Child list has changed (innerHTML change)
-        var newValue = element.innerHTML;
+        let newValue = element.innerHTML;
 
         // Call the callback function with the new value
         callbackFunc(newValue);
@@ -13,7 +13,7 @@ function listenForChanges(element, attribute, callbackFunc) {
   });
 
   // Configure the observer to watch for child list changes
-  var config = { childList: true };
+  const config = { childList: true };
 
   // Start observing the target element
   observer.observe(element, config);
@@ -83,6 +83,11 @@ async function beginFormProcessing() {
       const el = document.createElement('h5');
       el.textContent = message;
       el.classList.add('error-text');
+      
+      // this makes sure it shows as a block element
+      if (parentElement.classList.contains('flex')) {
+        parentElement = parentElement.parentElement;
+      }
 
       if (parentElement.querySelector('.error-text') == null) {
         parentElement.appendChild(el);
@@ -180,12 +185,12 @@ async function beginFormProcessing() {
 
     // Begin second step constrols
     function secondStepControls() {
-      const customRadios = document.getElementsByClassName('custom-radio');
-      [].forEach.call(customRadios, (radio) => radio.addEventListener('click', function (e) {
+      const topMenuElems = document.getElementsByClassName('top-radio-controls');
+      [].forEach.call(topMenuElems, (radio) => radio.addEventListener('click', function (e) {
         this.classList.add('custom-select-active');
 
         // remove from all others
-        [].forEach.call(customRadios, (radio) => {
+        [].forEach.call(topMenuElems, (radio) => {
           if (radio !== this) {
             radio.classList.remove('custom-select-active');
           }
@@ -305,9 +310,10 @@ async function beginFormProcessing() {
         }
       });
 
-      const landlordOrHomeownerElemFromNiceSelect = document.getElementById('landlord-or-homeowner').querySelector('.current');
+      // listen for css change on the parent element and use that instead
+      const landlordAndHomeOwner = document.getElementById('landlord-or-homeowner').querySelector('.current');
 
-      listenForChanges(landlordOrHomeownerElemFromNiceSelect, 'innerHTML', function (newValue) {
+      listenForChanges(landlordAndHomeOwner, 'innerHTML', function (newValue) {
         if (newValue == 'Landlord') {
           document.getElementById('ownership-type').classList.add('hide');
           document.getElementById('landlord-last').classList.remove('hide');
@@ -370,7 +376,7 @@ async function beginFormProcessing() {
         delete neededFields['sale-reason-other'];
       }
 
-      if (document.getElementById('landlord-or-homeowner').parentElement.querySelector('.current').textContent !== 'Homeowner') {
+      if (document.querySelector(`[name='landlord-or-homeowner']`).value !== 'Homeowner') {
         delete neededFields['ownership-type'];
       }
 
@@ -495,13 +501,34 @@ async function beginFormProcessing() {
 document.addEventListener('DOMContentLoaded', () => {
   beginFormProcessing();
 
+  // initialize tagify
   const inputElements = document.querySelectorAll('.tagify');
-  
   inputElements.forEach(function (inputElement) {
       new Tagify(inputElement, {
         enforceWhitelist: true,
         whitelist: inputElement.value.trim().split(/\s*,\s*/)
       });
+  });
+
+  // setup all custom radio buttons
+  const customRadios = document.querySelectorAll('.custom-radio');
+
+  customRadios.forEach(function (customRadio) {
+    customRadio.addEventListener('click', function (e) {
+      customRadio.classList.add('custom-select-active');
+      
+      // remove from all others
+      const othersInGroup = document.querySelectorAll(`[data-group="${customRadio.dataset.group}"]`);
+      [].forEach.call(othersInGroup, (radio) => {
+        if (radio !== customRadio) {
+          radio.classList.remove('custom-select-active');
+        }
+      });
+
+      // update the input
+      const input = document.querySelector(`[name="${customRadio.dataset.target}"]`);
+      input.value = customRadio.dataset.val;
+    });
   });
 
 });

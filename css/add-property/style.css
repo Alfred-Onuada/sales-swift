@@ -6894,25 +6894,26 @@ background-color: #1665D8;
 	display: none;
 }
 
-.custom-radio {
+.custom-radio, .top-radio-controls {
 	padding: 15px 10px;
 	border-radius: 5px;
 	border: 1px solid gray;
 	width: fit-content;
+	flex-grow: 1;
 }
 
-.custom-radio:hover {
+.custom-radio:hover, .top-radio-controls:hover {
 	background-color: #4065ec;
 	border: 0.5px solid gray;
 }
 
-.custom-radio h4 {
+.custom-radio h4, .top-radio-controls h4 {
 	margin: 0px;
 	color: black;
 	font-size: 14px;
 }
 
-.custom-radio:hover h4 {
+.custom-radio:hover h4, .top-radio-controls:hover h4 {
 	color: white;
 }
 
@@ -6956,6 +6957,7 @@ background-color: #1665D8;
 	color: red;
 	font-size: 12px;
 	font-weight: normal;
+	flex: none;
 }
 
 .select-section {
