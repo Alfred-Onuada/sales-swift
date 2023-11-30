@@ -1,10 +1,17 @@
+/**
+ * provides a handy way to add a custom event listener for when an element's innerHTML changes
+ * @param {HTMLElement} element 
+ * @param {string} attribute 
+ * @param {Function} callbackFunc 
+ * @returns 
+ */
 function listenForChanges(element, attribute, callbackFunc) {
   // Create a MutationObserver instance
   const observer = new MutationObserver(function(mutationsList, observer) {
     for (const mutation of mutationsList) {
       if (mutation.type === 'childList' && mutation.target === element) {
         // Child list has changed (innerHTML change)
-        let newValue = element.innerHTML;
+        let newValue = element[attribute];
 
         // Call the callback function with the new value
         callbackFunc(newValue);
@@ -29,14 +36,14 @@ async function beginFormProcessing() {
     const currentLocationSpan = document.getElementsByClassName('currentLocation');
     const currentLocationFromUrl = decodeURI(window.location.search.replace('?id=', ''));
 
-    const resp = await fetch(`${retrieveApiUrl}&uprn=${currentLocationFromUrl}`);
-    const data = await resp.json();
+    // const resp = await fetch(`${retrieveApiUrl}&uprn=${currentLocationFromUrl}`);
+    // const data = await resp.json();
 
-    if (currentLocationFromUrl) {
-      [].forEach.call(currentLocationSpan, function (el) {
-        el.innerHTML = makeIntialsCapital(data.results[0].DPA.ADDRESS);
-      });
-    }
+    // if (currentLocationFromUrl) {
+    //   [].forEach.call(currentLocationSpan, function (el) {
+    //     el.innerHTML = makeIntialsCapital(data.results[0].DPA.ADDRESS);
+    //   });
+    // }
 
     const allData = {};
 

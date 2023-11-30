@@ -1,4 +1,7 @@
 function initializeAutoComplete() {
+  const API_KEY = "uY7Jn1XGF95U6w9FzySvGlgI4RmYr38l";
+  const BASE_API_URL = "https://api.os.uk/search/places/v1/";
+
   function showAutoCompletion(input, val, autocompleteOptions, type) {
     /*close any already open lists of autocompleted values*/
     closeAllLists();
@@ -45,14 +48,15 @@ function initializeAutoComplete() {
       const b = document.createElement("DIV");
       b.innerHTML = highlightMatch(makeIntialsCapital(autocompleteOptions[options[i]].address));
       b.dataset.name = makeIntialsCapital(autocompleteOptions[options[i]].address);
-      
+      b.dataset.postcode = options[i];
+
       // container is for an address that contains sub addresses
       if (type == "container") {
         b.innerHTML += ` - <span class="extra-address-text">${autocompleteOptions[options[i]].count} addresses</span><span class="fa-solid fa-angle-right angle-right-search"></span>`;
         b.dataset.id = options[i];
 
         b.addEventListener("click", function(e) {
-          input.value = this.dataset.name;
+          input.value = this.dataset.postcode;
           closeAllLists();
           
           searchAddressInContainer(this.dataset.id);
@@ -105,7 +109,7 @@ function initializeAutoComplete() {
         const postcodesArray = Object.keys(postcodes);
     
         // make 6 requests at a time to the postcodeAPIUrl and update the count
-        const postcodeAPIUrl = "https://api.os.uk/search/places/v1/postcode?key=uY7Jn1XGF95U6w9FzySvGlgI4RmYr38l&format=JSON&maxresults=10&postcode="
+        const postcodeAPIUrl = `${BASE_API_URL}postcode?key=${API_KEY}&format=JSON&maxresults=10&postcode=`;
     
         const promises = [];
     
@@ -155,7 +159,7 @@ function initializeAutoComplete() {
 
   async function searchLocation(input) {
     try {
-      const findApiUrl = "https://api.os.uk/search/places/v1/find?key=uY7Jn1XGF95U6w9FzySvGlgI4RmYr38l&format=JSON&maxresults=10";
+      const findApiUrl = `${BASE_API_URL}find?key=${API_KEY}&format=JSON&maxresults=10`;
 
       const searchTerm = input.value;
       const resp = await fetch(`${findApiUrl}&query=${searchTerm}`);
@@ -174,7 +178,7 @@ function initializeAutoComplete() {
 
   async function searchAddressInContainer(postcode) {
     try {
-      const postcodeApiUrl = "https://api.os.uk/search/places/v1/postcode?key=uY7Jn1XGF95U6w9FzySvGlgI4RmYr38l&format=JSON&maxresults=100";
+      const postcodeApiUrl = `${BASE_API_URL}postcode?key=${API_KEY}&format=JSON&maxresults=100`;
 
       const resp = await fetch(`${postcodeApiUrl}&postcode=${postcode}`);
       const data = await resp.json();
